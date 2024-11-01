@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'PixelFont';
+    src: url('/fonts/PixelFont.ttf'); /* Ruta relativa a tu carpeta de recursos */
+}
+
+.pixel-font {
+    -fx-font-family: 'PixelFont';
+    -fx-font-size: 25px;
+    -fx-text-fill: white;
+}

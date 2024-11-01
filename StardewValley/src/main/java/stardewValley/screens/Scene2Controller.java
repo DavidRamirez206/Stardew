@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 import stardewValley.control.SceneManager;
 import stardewValley.model.Foxy;
 
-public class Scene2Controller {
+public class Scene2Controller extends SceneBase {
 
     @FXML
     private Canvas canvas;

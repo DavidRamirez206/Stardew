@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import stardewValley.control.SceneManager;
 
-public class Scene3Controller {
+public class Scene3Controller extends SceneBase {
 
     @FXML
     private Text scoreText;

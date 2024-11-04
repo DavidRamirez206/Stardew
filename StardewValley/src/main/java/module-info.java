@@ -2,6 +2,7 @@ module stardewvalley {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
+    requires java.desktop;
 
 
     opens stardewValley.control to javafx.fxml;
@@ -12,4 +13,6 @@ module stardewvalley {
 
     opens stardewValley.screens to javafx.fxml;
     exports stardewValley.screens;
+    exports stardewValley.model;
+    opens stardewValley.model to javafx.fxml;
 }

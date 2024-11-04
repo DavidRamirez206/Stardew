@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 
 <StackPane fx:id="rootVBox" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
-           fx:controller="stardewValley.control.InstructionsController" prefWidth="800.0" prefHeight="600.0"
+           fx:controller="stardewValley.screens.Instructions" prefWidth="800.0" prefHeight="600.0"
            stylesheets="@../css/instructionsBackground.css">
     <VBox alignment="CENTER" spacing="20.0">
         <Label fx:id="instructionLabel" text="Welcome to Stardew Valley" StackPane.alignment="CENTER"/>

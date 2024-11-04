@@ -1,4 +1,4 @@
-package stardewValley.control;
+package stardewValley.screens;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -10,8 +10,10 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import stardewValley.control.Controller;
+import stardewValley.ui.StardewValley;
 
-public class AppController {
+public class MainScene {
     @FXML
     private StackPane rootVBox;
 
@@ -20,16 +22,6 @@ public class AppController {
 
     @FXML
     private ImageView backgroundImage; // Background
-
-    private SceneManager sceneManager;
-
-    public SceneManager getSceneManager() {
-        return sceneManager;
-    }
-
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
-    }
 
     @FXML
     public void initialize() {
@@ -66,12 +58,11 @@ public class AppController {
 
 
         rootVBox.setOnKeyPressed(event -> {
-            switch (event.getCode()){
+            switch (event.getCode()) {
                 case ENTER:
-                    //System.out.println("Se presionó ENTER");
-                    sceneManager.loadInstructions();
+                    StardewValley.getInstance().changeScene(2);
                     break;
-                case SPACE:
+                default:
                     break;
             }
             event.consume();

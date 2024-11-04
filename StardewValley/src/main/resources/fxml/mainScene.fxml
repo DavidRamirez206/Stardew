@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.image.ImageView?>
 
-<StackPane fx:id="rootVBox" alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="stardewValley.control.AppController">
+<StackPane fx:id="rootVBox" alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="stardewValley.screens.MainScene">
   <VBox alignment="CENTER" spacing="20.0">
     <padding>
       <Insets bottom="40.0" left="40.0" right="40.0" top="40.0"/>

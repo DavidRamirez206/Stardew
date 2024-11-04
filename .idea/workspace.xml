@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="829be2ee-55f5-4993-9f78-33e42b02b5db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/HBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/PurplePortal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/VBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/MainScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/InstructionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Instructions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/SceneManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Scene1Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Scene2Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Scene3Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/SceneBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/SceneBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/instructions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/instructions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/mainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/mainScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/scene1.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/scene2.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/scene3.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/background/lateralBackGround.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/background/scene2Background.png" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/img/background/scene2Background.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2oE4TrWKTHSHDY5p1ebiIlPB17N" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.StardewValley.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ismae/Documents/APO/Stardew&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ismae\Documents\APO\Stardew\StardewValley\src\main\java\stardewValley" />
+      <recent name="C:\Users\ismae\Documents\APO\Stardew\StardewValley\src\main\resources\img\Characters\Foxy\object" />
+      <recent name="C:\Users\ismae\Documents\APO\Stardew\StardewValley\src\main\resources\img\Characters\Foxy" />
+      <recent name="C:\Users\ismae\Documents\APO\Stardew\StardewValley\src\main\java\stardewValley\screens" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="stardewValley.model" />
+      <recent name="stardewValley.screens.screenB" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="829be2ee-55f5-4993-9f78-33e42b02b5db" name="Changes" comment="" />
+      <created>1730421411901</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730421411901</updated>
+      <workItem from="1730421412954" duration="2314000" />
+      <workItem from="1730423745974" duration="5296000" />
+      <workItem from="1730435589950" duration="1255000" />
+      <workItem from="1730469717261" duration="779000" />
+      <workItem from="1730470681832" duration="12000" />
+      <workItem from="1730478661100" duration="3106000" />
+      <workItem from="1730482649152" duration="2732000" />
+      <workItem from="1730495477409" duration="81000" />
+      <workItem from="1730497900844" duration="6315000" />
+      <workItem from="1730511511555" duration="4123000" />
+      <workItem from="1730516615165" duration="12553000" />
+      <workItem from="1730564378239" duration="6562000" />
+      <workItem from="1730610128149" duration="48000" />
+      <workItem from="1730657869343" duration="7782000" />
+      <workItem from="1730687487163" duration="1970000" />
+      <workItem from="1730691957557" duration="3069000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

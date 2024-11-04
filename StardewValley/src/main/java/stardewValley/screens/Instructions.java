@@ -1,4 +1,4 @@
-package stardewValley.control;
+package stardewValley.screens;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
@@ -12,8 +12,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
+import stardewValley.control.Controller;
+import stardewValley.ui.StardewValley;
 
-public class InstructionsController {
+public class Instructions {
 
     @FXML
     private Label pressEnterLabel;
@@ -35,8 +37,6 @@ public class InstructionsController {
     @FXML
     private ImageView backgroundImage; // Background
 
-    private SceneManager sceneManager;
-
     private String[] instructions = {
 
             //Do not remove spaces in messages.
@@ -53,14 +53,6 @@ public class InstructionsController {
             "...",
             "Explore and have fun!",
     };
-
-    public SceneManager getSceneManager() {
-        return sceneManager;
-    }
-
-    public void setSceneManager(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
-    }
 
     @FXML
     public void initialize() {
@@ -93,7 +85,7 @@ public class InstructionsController {
 
         rootVBox.setOnKeyPressed(this::handleKeyPress);
 
-        skipButton.setOnAction(event -> sceneManager.switchToScene1());
+        skipButton.setOnAction(event -> StardewValley.getInstance().changeScene(3));
 
         Platform.runLater(() -> rootVBox.requestFocus());
     }
@@ -106,7 +98,7 @@ public class InstructionsController {
                     instructionIndex++;
                     instructionLabel.setText(instructions[instructionIndex]);
                 } else {
-                    sceneManager.switchToScene1();
+                    StardewValley.getInstance().changeScene(3);
                 }
                 break;
 

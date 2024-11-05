@@ -21,8 +21,9 @@ public class Controller implements Initializable {
     private GraphicsContext graphicsContext;
     private ArrayList<SceneBase> screens;
     private boolean isRunning;
-    public static int SCREEN = 1;
+    public static int SCREEN = 0;
     private Foxy foxy;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -32,9 +33,10 @@ public class Controller implements Initializable {
     public void runningScenes(){
         this.graphicsContext = canvas.getGraphicsContext2D();
         this.foxy = new Foxy(this.canvas);
-        screens = new ArrayList<>(2);
+        screens = new ArrayList<>(3);
         screens.add(new ScreenA(canvas, "scene1Background", foxy));
         screens.add(new ScreenB(canvas, "scene2Background", foxy));
+        screens.add(new ScreenC(canvas, "scene3Background", foxy));
 
         initActions();
 

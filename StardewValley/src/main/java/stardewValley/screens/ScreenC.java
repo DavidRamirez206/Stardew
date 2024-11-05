@@ -5,11 +5,15 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import stardewValley.control.Controller;
 import stardewValley.model.Foxy;
+import stardewValley.model.River;
 
 public class ScreenC extends SceneBase{
 
+    private River river;
+
     public ScreenC(Canvas canvas, String img, Foxy foxy) {
         super(canvas, img, foxy);
+        river = new River(canvas);
         draw();
     }
 
@@ -19,7 +23,12 @@ public class ScreenC extends SceneBase{
     }
 
     public void redraw(){
+        super.gcUpdate();
         super.foxyRedraw();
+    }
+
+    @Override
+    public void updateObjects(){
     }
 
     @Override

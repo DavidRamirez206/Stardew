@@ -34,12 +34,18 @@ public class ScreenB extends SceneBase {
     }
 
     @Override
+    public void updateObjects(){
+        //this.foxy.updatePosition();
+        portal.setPaint(false);
+    }
+
+    @Override
     public void onKeyPressed(KeyEvent event){
         super.foxy.onKeyPressed(event);
 
         if (event.getCode() == KeyCode.SPACE){
-            super.foxy.setScene(1);
-            Controller.SCREEN = 0;
+            super.foxy.setScene(3);
+            Controller.SCREEN = 2;
         }
     }
 
@@ -56,6 +62,10 @@ public class ScreenB extends SceneBase {
     private void drawBar(){
         this.vBar.draw();
         this.hBar.draw();
+    }
+
+    public void setPortal(PurplePortal portal){
+        this.portal = portal;
     }
 
 

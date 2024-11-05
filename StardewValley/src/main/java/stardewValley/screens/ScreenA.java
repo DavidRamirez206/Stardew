@@ -32,6 +32,13 @@ public class ScreenA extends SceneBase {
     }
 
     @Override
+    public void updateObjects(){
+        //this.foxy.updatePosition();
+
+        this.house.setPaint(false);
+    }
+
+    @Override
     public void onKeyPressed(KeyEvent event){
 
         if (event.getCode() == KeyCode.SPACE){

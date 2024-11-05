@@ -165,10 +165,10 @@ public class Foxy {
             if(newX  < canvasHeight * 0.04557291667) {
 
                 //Esto se va a cambiar. Es para la escena 3
-                scene = 1;
+                scene = 3;
                 newX = canvas.getWidth() * 0.4817708333;
                 newY = canvas.getHeight() * 0.599537037;
-                Controller.SCREEN = 0;
+                Controller.SCREEN = 2;
             } else if(newY > canvasHeight * 0.8726851852){
                 scene = 1;
                 newX = canvas.getWidth() * 0.4817708333;
@@ -191,12 +191,16 @@ public class Foxy {
         position.setY(newY);
     }
 
+    //Este metodo es para el movimiento en cualquier escenario
     private void anyScene(){
         newX = position.getX();
         newY = position.getY();
 
+        /*
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
+
+         */
 
         double my = 0.01157407407 * canvasHeight;
         double mx = 0.006510416667 * canvasWidth;
@@ -287,7 +291,7 @@ public class Foxy {
 
 
         if (canvasWidth != 0 && canvasHeight != 0) {
-            // Ajusta la posición basándose en las nuevas dimensiones del canvas
+            // Lo siguiente es para ajustar la posición basándose en las nuevas dimensiones del canvas
             position.setX(proportionX * canvasWidth);
             position.setY(proportionY * canvasHeight);
         } else {

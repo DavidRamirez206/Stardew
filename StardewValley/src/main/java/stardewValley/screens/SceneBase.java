@@ -5,8 +5,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import stardewValley.control.Controller;
 import stardewValley.model.Foxy;
-import stardewValley.model.*;
+import stardewValley.model.River;
 
 public abstract class SceneBase {
     protected Canvas canvas;
@@ -15,9 +16,12 @@ public abstract class SceneBase {
     protected Foxy foxy;
     protected Image background;
 
+    protected River river;
+
     public SceneBase(Canvas canvas, String img, Foxy foxy) {
         this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
+        river = new River(canvas);
         this.running = true;
         this.foxy = foxy;
         this.loadIMG(img);
@@ -32,24 +36,26 @@ public abstract class SceneBase {
         gc.drawImage(background, 0, 0, canvas.getWidth(), canvas.getHeight());
 
         canvas.widthProperty().addListener((obs, oldVal, newVal) -> {
-            foxy.setChangePosition(true);
-            update();
+            updateFoxy();
+            river.setPaint(false);
+            updateObjects();
             redraw();
         });
 
         canvas.heightProperty().addListener((obs, oldVal, newVal) -> {
-            foxy.setChangePosition(true);
-            update();
+            updateFoxy();
+            river.setPaint(false);
+            updateObjects();
             redraw();
         });
     }
 
-    private void update(){
+    private void updateFoxy(){
+        foxy.setChangePosition(true);
         this.foxy.setPaint(false);
-        //this.foxy.updatePosition();
-        PurplePortal.paint = false;
-        House.paint = false;
     }
+
+    public abstract void updateObjects();
 
     private void loadIMG(String img) {
         this.background = new Image(getClass().getResourceAsStream("/img/background/" + img + ".png"));
@@ -57,8 +63,12 @@ public abstract class SceneBase {
 
     public void gcUpdate(){
         this.gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        this.gc.drawImage(background, 0, 0, canvas.getWidth(), canvas.getHeight());
 
+        //Esto es para que primero se dibuje el río por detrás del fondo del scenario 3
+        if(Controller.SCREEN == 2){
+            river.draw();
+        }
+        this.gc.drawImage(background, 0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
     public void foxyRedraw() {

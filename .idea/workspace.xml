@@ -5,29 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="829be2ee-55f5-4993-9f78-33e42b02b5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/HBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/PurplePortal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/VBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/MainScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/InstructionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Instructions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/SceneManager.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/River.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Scene1Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Scene2Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Scene3Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/PurplePortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/PurplePortal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/SceneBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/SceneBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenA.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenB.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/instructions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/instructions.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/mainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/mainScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/scene1.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/scene2.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/scene3.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/background/lateralBackGround.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/background/scene2Background.png" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/img/background/scene2Background.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +100,14 @@
       <workItem from="1730657869343" duration="7782000" />
       <workItem from="1730687487163" duration="1970000" />
       <workItem from="1730691957557" duration="3069000" />
+      <workItem from="1730695367027" duration="199000" />
+      <workItem from="1730731087871" duration="4384000" />
+      <workItem from="1730751169189" duration="926000" />
+      <workItem from="1730767753138" duration="3159000" />
+      <workItem from="1730809318891" duration="2835000" />
+      <workItem from="1730815127766" duration="78000" />
+      <workItem from="1730815437789" duration="132000" />
+      <workItem from="1730815627213" duration="263000" />
     </task>
     <servers />
   </component>

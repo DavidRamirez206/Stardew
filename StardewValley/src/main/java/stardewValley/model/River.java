@@ -3,34 +3,35 @@ package stardewValley.model;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 
-public class PurplePortal {
+public class River {
 
     //Graphic elements
     private Canvas canvas;
     private GraphicsContext gc;
 
-    private ArrayList<Image> idles;
+    private ArrayList<Image> moving;
 
 
     private Position position;
-    private double sizeH = 80;
-    private double sizeW = 80;
+    private double sizeH;
+    private double sizeW;
     private int frame;
 
     //Keys
-    private boolean paint;
+    public boolean paint;
 
 
-    public PurplePortal(Canvas canvas) {
+    public River(Canvas canvas) {
         this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
-        this.idles = new ArrayList<>();
+        this.moving = new ArrayList<>();
         this.frame = 0;
-        this.position = new Position(100, 100);
+        sizeH = canvas.getHeight();
+        sizeW = canvas.getWidth();
+        this.position = new Position(0, 0);
         paint = false;
     }
 
@@ -43,24 +44,21 @@ public class PurplePortal {
     }
 
     private void setIdles() {
-        idles = loadImages("/img/object/portal/purplePortal-", 6);
+        moving = loadImages("/img/object/Scene3/river/river", 2);
     }
-
 
     public void draw() {
         if(paint == false){
             //No modificar los siguientes productos. Son para mantener proporciones
-            idles.clear();
+            moving.clear();
 
-            this.sizeW = 3* canvas.getWidth() * 0.0325520833;
-            this.sizeH = 6.5*canvas.getHeight() * 0.0578703704;
-            position.setX(0);
-            position.setY(canvas.getHeight() * 0.4016203704);
+            this.sizeW = canvas.getWidth();
+            this.sizeH = canvas.getHeight();
             setIdles();
             paint = true;
         }
 
-        gc.drawImage(idles.get(frame % idles.size()), position.getX(), position.getY());
+        gc.drawImage(moving.get(frame % moving.size()), position.getX(), position.getY());
 
         frame++;
     }

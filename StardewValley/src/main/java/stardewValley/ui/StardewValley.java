@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class StardewValley extends Application {
 
-    public static int MAIN_SCENE = 3 ;
+    public static int MAIN_SCENE = 1 ;
     private static StardewValley instance;
     private Stage stage;
 
@@ -28,7 +28,7 @@ public class StardewValley extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
         instance = this;
         setup(stage);
         loadScene(stage, MAIN_SCENE);
@@ -80,9 +80,8 @@ public class StardewValley extends Application {
 
 
     private void setup(Stage stage){
-
-        stage.setTitle("Stardew Valley");
         stage.setFullScreen(true);
+        stage.setTitle("Stardew Valley");
 
         Image icon = new Image(getClass().getResourceAsStream("/img/icon/icon.png"));
 

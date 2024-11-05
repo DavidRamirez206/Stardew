@@ -18,7 +18,7 @@ public class House {
     private double sizeW = 80;
 
     //Keys
-    public static boolean paint;
+    private boolean paint;
 
 
     public House(Canvas canvas) {

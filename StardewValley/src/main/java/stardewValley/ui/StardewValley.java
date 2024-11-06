@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class StardewValley extends Application {
 
-    public static int MAIN_SCENE = 1 ;
+    public static int MAIN_SCENE = 4 ;
     private static StardewValley instance;
     private Stage stage;
 

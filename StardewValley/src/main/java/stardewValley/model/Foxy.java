@@ -162,20 +162,38 @@ public class Foxy {
 
         } else if(scene == 2){
 
-            if(newX  < canvasHeight * 0.04557291667) {
+            //0.04557291667
+            //0.01953125
+            if(newX  < canvasWidth * 0.01953125) { //Scene3
+                scene = 3;
+                newX = canvas.getWidth() * 0.0462962963;
+                newY = canvas.getHeight() * 0.5960648148;
+                lookAtRight = true;
+                Controller.SCREEN = 2;
 
+                /*
                 //Esto se va a cambiar. Es para la escena 3
                 scene = 3;
                 newX = canvas.getWidth() * 0.4817708333;
                 newY = canvas.getHeight() * 0.599537037;
                 Controller.SCREEN = 2;
-            } else if(newY > canvasHeight * 0.8726851852){
+
+                 */
+            } else if(newY > canvasHeight * 0.8726851852){ //Scene 1
                 scene = 1;
                 newX = canvas.getWidth() * 0.4817708333;
                 newY = canvas.getHeight() * 0.599537037;
                 Controller.SCREEN = 0;
             } else {
                 collisionsScene2();
+            }
+        } else {
+            if(newX <= 0 && ((newY >= canvasHeight * 0.5555555557) && (newY <= canvasHeight * 0.6111111111))){
+                scene = 2;
+                newX = canvasWidth * 0.08463541667;
+                newY = canvasHeight * 0.5902777779;
+                lookAtRight = true;
+                Controller.SCREEN = 1;
             }
         }
 
@@ -185,7 +203,6 @@ public class Foxy {
         System.out.println("--------------------------");
         System.out.println("Canvas width:" + canvasWidth);
         System.out.println("Canvas height:" + canvasHeight);
-
 
         position.setX(newX);
         position.setY(newY);

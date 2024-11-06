@@ -3,7 +3,6 @@ package stardewValley.model;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 
@@ -23,6 +22,9 @@ public class PurplePortal {
 
     //Keys
     private boolean paint;
+    private double yPosition = 0.4016203704;
+    private double newSizeH = 6.5;
+    private double newSizeW = 3;
 
 
     public PurplePortal(Canvas canvas) {
@@ -52,10 +54,10 @@ public class PurplePortal {
             //No modificar los siguientes productos. Son para mantener proporciones
             idles.clear();
 
-            this.sizeW = 3* canvas.getWidth() * 0.0325520833;
-            this.sizeH = 6.5*canvas.getHeight() * 0.0578703704;
+            this.sizeW = newSizeW * canvas.getWidth() * 0.0325520833;
+            this.sizeH = newSizeH *canvas.getHeight() * 0.0578703704;
             position.setX(0);
-            position.setY(canvas.getHeight() * 0.4016203704);
+            position.setY(canvas.getHeight() * yPosition);
             setIdles();
             paint = true;
         }
@@ -73,4 +75,15 @@ public class PurplePortal {
         this.paint = b;
     }
 
+    public void setYPosition(double yPosition) {
+        this.yPosition = yPosition;
+    }
+
+    public void setNewSizeH(double newSizeH) {
+        this.newSizeH = newSizeH;
+    }
+
+    public void setNewSizeW(double newSizeW) {
+        this.newSizeW = newSizeW;
+    }
 }

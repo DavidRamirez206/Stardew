@@ -3,5 +3,7 @@ package stardewValley.model;
 public enum State {
     STATIC,
     RUNNING,
-    HURT;
+    CUTTING,
+    HURT,
+    CLIMBING;
 }

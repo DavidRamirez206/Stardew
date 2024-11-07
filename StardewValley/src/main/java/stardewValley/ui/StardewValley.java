@@ -17,14 +17,6 @@ public class StardewValley extends Application {
     private static StardewValley instance;
     private Stage stage;
 
-    /*
-    @Override
-    public void start(Stage stage) throws Exception {
-        new SceneManager(stage);
-    }
-
-     */
-
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;

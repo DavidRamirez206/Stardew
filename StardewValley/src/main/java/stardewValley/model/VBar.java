@@ -8,7 +8,6 @@ public class VBar {
     private Canvas canvas;
     public static VBar instance;
 
-    //No borrar estos porcentajes (son para mantener las proporciones en el escenario para colisiones)
     //Pared adyacente a la segunda pared blanca
     private Position position1;
 
@@ -33,6 +32,12 @@ public class VBar {
         drawB3();
     }
 
+    /*
+        *Do not delete the doubles that are multiplying.
+
+        *Its function is to maintain proportions
+            in the collisions so that the program is adaptable to any computer.
+     */
     public void drawB1(){
         position1.setX(0.4622395833 * canvas.getWidth());
         position1.setY(0.4050925926 * canvas.getHeight());

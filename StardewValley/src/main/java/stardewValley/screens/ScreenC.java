@@ -6,17 +6,20 @@ import javafx.scene.input.KeyEvent;
 import stardewValley.control.Controller;
 import stardewValley.model.Foxy;
 import stardewValley.model.PurplePortal;
-import stardewValley.model.River;
+import stardewValley.model.Rock;
 
 public class ScreenC extends SceneBase{
 
-    private River river;
     private PurplePortal portal;
+    private Rock rockE;
+    private Rock rockD;
+    private Rock rockC;
+    private Rock rockB;
+    private Rock rockA;
 
     public ScreenC(Canvas canvas, String img, Foxy foxy) {
         super(canvas, img, foxy);
-        river = new River(canvas);
-        portal = new PurplePortal(canvas);
+        load(canvas);
         portal.setYPosition(0.5902777776);
         portal.setNewSizeH(1.5);
         portal.setNewSizeW(1);
@@ -31,12 +34,14 @@ public class ScreenC extends SceneBase{
     public void redraw(){
         super.gcUpdate();
         portal.draw();
+        drawRock();
         super.foxyRedraw();
     }
 
     @Override
     public void updateObjects(){
         this.portal.setPaint(false);
+        reloadRocks(false);
     }
 
     @Override
@@ -52,6 +57,35 @@ public class ScreenC extends SceneBase{
     @Override
     public void onKeyReleased(KeyEvent event){
         super.foxy.onKeyReleased(event);
+    }
+
+    private void load(Canvas canvas){
+        portal = new PurplePortal(canvas);
+        rocks(canvas);
+    }
+
+    private void rocks(Canvas canvas){
+        rockA = new Rock(canvas, 0.5013020834, 0.1967592592, 0);
+        rockB = new Rock(canvas, 0.2799479167, 0.09259259256, 0);
+        rockC = new Rock(canvas, 0.8203125, 0.3703703702, 0);
+        rockD = new Rock(canvas, 0.3190104167, 0.4745370369, 0);
+        rockE = new Rock(canvas, 0.05208333333, 0.1504629629, 5);
+    }
+
+    private void reloadRocks(boolean reload){
+        rockA.setPaint(reload);
+        rockB.setPaint(reload);
+        rockC.setPaint(reload);
+        rockD.setPaint(reload);
+        rockE.setPaint(reload);
+    }
+
+    private void drawRock(){
+        rockA.draw();
+        rockB.draw();
+        rockC.draw();
+        rockD.draw();
+        rockE.draw();
     }
 
 

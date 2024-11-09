@@ -4,36 +4,81 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+import java.util.Random;
+
 public class Rock {
 
     //Graphic elements
     private Canvas canvas;
     private GraphicsContext gc;
 
-    private Image half1;
-    private Image half2;
+    private Image image;
 
 
     private Position position;
-    private double sizeH = 40;
-    private double sizeW = 80;
+    private double sizeH;
+    private double sizeW;
+    private int type;
+    private double positionX;
+    private double positionY;
 
-    private Position position2;
-    private double sizeH2 = 40;
-    private double sizeW2 = 80;
+    private boolean cut;
 
     //Keys
     private boolean paint;
-    private boolean paint2;
 
 
-    public Rock(Canvas canvas) {
+    /*
+        Type:
+        * 1. Largest
+        * 2. Large
+        * 3. Medium
+        * 4. Small
+        * 5. Smallest
+    */
+    public Rock(Canvas canvas, double positionX, double positionY, int type) {
         this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
+        this.positionX = positionX;
+        this.positionY = positionY;
+        if(type != 0){
+            this.type=type;
+        } else {
+            this.type = new Random().nextInt(5) + 1;
+        }
         this.position = new Position(100, 100);
-        this.position2 = new Position(100, 100);
         paint = false;
-        paint2 = false;
+        cut = false;
+    }
+
+
+    private void size(){
+
+        switch (type){
+            case 1 -> {
+                updateSize(0.02604166667, 0.0462962963);
+            }
+            case 2 -> {
+                updateSize(0.03255208333, 0.05787037037);
+            }
+            case 3 -> {
+                updateSize(0.0390625, 0.06944444444);
+            }
+            case 4 -> {
+                updateSize(0.04557291667, 0.08101851852);
+
+            }
+            case 5 -> {
+                updateSize(0.05208333333, 0.09259259259);
+            }
+        }
+    }
+
+    private void updateSize(double sW, double sH){
+        sizeW = canvas.getWidth() * sW;
+        sizeH = canvas.getHeight() * sH;
+        position.setX(canvas.getWidth() * positionX);
+        position.setY(canvas.getHeight() * positionY);
     }
 
     private Image loadImage(String basePath, double sizeW, double sizeH) {
@@ -41,49 +86,39 @@ public class Rock {
     }
 
     private void load1() {
-        half1 = loadImage("/img/object/halfHouse1", this.sizeW, this.sizeH);
-    }
-
-    private void load2() {
-        half2 = loadImage("/img/object/halfHouse2", this.sizeW2, this.sizeH2);
-    }
-
-
-    public void draw1() {
-
-        if (paint == false) {
-            reLoad(1);
-            load1();
-            paint = true;
+        switch (type) {
+            case 1 -> {
+                image = loadImage("/img/object/Scene3/rock/smallestRock", this.sizeW, this.sizeH);
+            }
+            case 2 -> {
+                image = loadImage("/img/object/Scene3/rock/smallRock", this.sizeW, this.sizeH);
+            }
+            case 3 -> {
+                image = loadImage("/img/object/Scene3/rock/mediumRock", this.sizeW, this.sizeH);
+            }
+            case 4 -> {
+                image = loadImage("/img/object/Scene3/rock/largeRock", this.sizeW, this.sizeH);
+            }
+            case 5 -> {
+                image = loadImage("/img/object/Scene3/rock/largestRock", this.sizeW, this.sizeH);
+            }
         }
 
-        gc.drawImage(half1, position.getX(), position.getY());
     }
 
-    public void draw2() {
-        if (paint2 == false) {
-            reLoad(2);
-            load2();
-            paint2 = true;
+
+    public void draw() {
+        if(cut == false){
+            if (paint == false) {
+                load1();
+                size();
+                paint = true;
+            }
+
+            gc.drawImage(image, position.getX(), position.getY());
         }
 
-        gc.drawImage(half2, position2.getX(), position2.getY());
-    }
 
-    private void reLoad(int imageNumber) {
-        if (imageNumber == 1) {
-            sizeW = canvas.getWidth() * 0.0325520833 * 4;
-            sizeH = canvas.getHeight() * 0.0578703704 * 2;
-            position.setX((canvas.getWidth() / 2) - (sizeW / 2));
-            position.setY(canvas.getHeight() * 0.5150462963);
-            //position.setY((canvas.getHeight() / 2) - (sizeH / 2)); 0.3177083333
-        } else if (imageNumber == 2) {
-            sizeW2 = canvas.getWidth() * 0.0325520833 * 4;
-            sizeH2 = canvas.getHeight() * 0.0578703704 * 2;
-            position2.setX((canvas.getWidth() / 2) - (sizeW2 / 2));
-            position2.setY(canvas.getHeight() * 0.3993055556);
-            //position2.setY((canvas.getHeight() / 2) - (sizeH2 / 2)); 0.3377250463
-        }
     }
 
     public Position getPosition() {
@@ -92,10 +127,6 @@ public class Rock {
 
     public void setPaint(boolean b) {
         this.paint = b;
-    }
-
-    public void setPaint2(boolean b) {
-        this.paint2 = b;
     }
 
 }

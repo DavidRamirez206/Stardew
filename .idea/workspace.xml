@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="829be2ee-55f5-4993-9f78-33e42b02b5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Rock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/verticalBar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Tree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +119,7 @@
       <workItem from="1731080293071" duration="932000" />
       <workItem from="1731086514905" duration="390000" />
       <workItem from="1731093884605" duration="4653000" />
-      <workItem from="1731172581527" duration="8523000" />
+      <workItem from="1731172581527" duration="9313000" />
     </task>
     <servers />
   </component>

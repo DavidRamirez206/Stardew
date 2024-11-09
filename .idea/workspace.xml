@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="829be2ee-55f5-4993-9f78-33e42b02b5db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Rock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/VBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/VBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/HBar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/VBar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenA.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenB.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/controller-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/controller-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/House.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/tube.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,22 +43,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.StardewValley.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ismae/Documents/APO/Stardew&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.StardewValley.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ismae/Desktop/hola",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ismae\Documents\APO\Stardew\StardewValley\src\main\java\stardewValley" />
@@ -115,7 +125,12 @@
       <workItem from="1730944040869" duration="3000" />
       <workItem from="1730944055901" duration="1122000" />
       <workItem from="1730986351074" duration="106000" />
-      <workItem from="1730997031292" duration="2318000" />
+      <workItem from="1730997031292" duration="3403000" />
+      <workItem from="1731015630784" duration="4000" />
+      <workItem from="1731074826963" duration="4922000" />
+      <workItem from="1731080293071" duration="932000" />
+      <workItem from="1731086514905" duration="390000" />
+      <workItem from="1731093884605" duration="4653000" />
     </task>
     <servers />
   </component>

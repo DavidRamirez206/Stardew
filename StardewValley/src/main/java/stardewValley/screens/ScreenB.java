@@ -7,21 +7,17 @@ import stardewValley.control.Controller;
 import stardewValley.model.*;
 
 public class ScreenB extends SceneBase {
-    private VBar vBar;
-    private HBar hBar;
     private PurplePortal portal;
 
     public ScreenB(Canvas canvas, String img, Foxy foxy) {
         super(canvas, img, foxy);
         this.portal = new PurplePortal(canvas);
-        initBar(canvas);
         draw();
     }
 
     @Override
     public void draw() {
         super.updateCanvas();
-        drawBar();
     }
 
     @Override
@@ -30,7 +26,6 @@ public class ScreenB extends SceneBase {
         //super.foxy.updatePosition();
         portal.draw();
         super.foxyRedraw();
-        drawBar();
     }
 
     @Override
@@ -52,20 +47,6 @@ public class ScreenB extends SceneBase {
     @Override
     public void onKeyReleased(KeyEvent event){
         super.foxy.onKeyReleased(event);
-    }
-
-    private void initBar(Canvas canvas){
-        this.vBar = new VBar(canvas);
-        this.hBar = new HBar(canvas);
-    }
-
-    private void drawBar(){
-        this.vBar.draw();
-        this.hBar.draw();
-    }
-
-    public void setPortal(PurplePortal portal){
-        this.portal = portal;
     }
 
 

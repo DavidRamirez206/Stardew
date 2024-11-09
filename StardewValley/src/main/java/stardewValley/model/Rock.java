@@ -4,7 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class House {
+public class Rock {
 
     //Graphic elements
     private Canvas canvas;
@@ -27,7 +27,7 @@ public class House {
     private boolean paint2;
 
 
-    public House(Canvas canvas) {
+    public Rock(Canvas canvas) {
         this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
         this.position = new Position(100, 100);

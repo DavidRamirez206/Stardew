@@ -6,7 +6,6 @@ import javafx.scene.input.KeyEvent;
 import stardewValley.control.Controller;
 import stardewValley.model.Foxy;
 import stardewValley.model.House;
-import stardewValley.model.PurplePortal;
 
 public class ScreenA extends SceneBase {
 
@@ -27,8 +26,9 @@ public class ScreenA extends SceneBase {
     public void redraw(){
         super.gcUpdate();
         //super.foxy.updatePosition();
-        house.draw();
+        house.draw1();
         super.foxyRedraw();
+        house.draw2();
     }
 
     @Override
@@ -36,6 +36,7 @@ public class ScreenA extends SceneBase {
         //this.foxy.updatePosition();
 
         this.house.setPaint(false);
+        this.house.setPaint2(false);
     }
 
     @Override

@@ -179,6 +179,23 @@ public class Foxy {
         }
     }
 
+    private void collisionsHouse(){
+        //Vertical 1
+        fromTo(0.4427083333, 0.4143518519, 0.4427083333, 0.5555555554);
+
+        //Vertical 2
+        fromTo(0.521484375, 0.4143518519, 0.52734375, 0.5555555554);
+
+        //Horizontal 1
+        fromTo(0.4427083333, 0.4143518519, 0.525390625, 0.4143518519);
+
+        //Horizontal 1/2 (A)
+        fromTo(0.4427083333, 0.5555555554, 0.46875, 0.5555555554);
+
+        //Horizontal 2/2 (B) 0.52734375 - 0.521484375
+        fromTo(0.5013020833, 0.5555555554, 0.525390625, 0.5555555554);
+    }
+
     public void onMove(){
         if(isChangePosition() == true){
             updatePosition();
@@ -194,16 +211,21 @@ public class Foxy {
             double y2 = canvasHeight * 0.5439814815;
 
             if((newX > x1 && newX < x2 ) && (newY >= y1 && newY < y2)){
+
                 scene = 2;
                 newY = canvas.getHeight() * 0.8564814815;
                 newX = canvas.getWidth() * 0.6315104167;
                 Controller.SCREEN = 1;
+
+
+                System.out.println(canvas.getHeight() * 0.8564814815);
+                System.out.println(canvas.getWidth() * 0.6315104167);
+            } else {
+                collisionsHouse();
             }
 
         } else if(scene == 2){
 
-            //0.04557291667
-            //0.01953125
             if(newX  < canvasWidth * 0.01953125) { //Scene3
                 scene = 3;
                 newX = canvas.getWidth() * 0.0462962963;
@@ -211,21 +233,13 @@ public class Foxy {
                 lookAtRight = true;
                 Controller.SCREEN = 2;
 
-                /*
-                //Esto se va a cambiar. Es para la escena 3
-                scene = 3;
-                newX = canvas.getWidth() * 0.4817708333;
-                newY = canvas.getHeight() * 0.599537037;
-                Controller.SCREEN = 2;
-
-                 */
             } else if(newY > canvasHeight * 0.8726851852){ //Scene 1
                 scene = 1;
                 newX = canvas.getWidth() * 0.4817708333;
                 newY = canvas.getHeight() * 0.599537037;
                 Controller.SCREEN = 0;
             } else {
-                collisionsScene2();
+                generalCollisionsInScene2();
             }
         } else {
             if(newX <= 0 && ((newY >= canvasHeight * 0.5555555557) && (newY <= canvasHeight * 0.6111111111))){
@@ -238,11 +252,6 @@ public class Foxy {
 
                 climbScene3();
                 diagonalCollisions();
-                // Aquí se actualizan las posiciones newX y newY para evitar que pase el río
-                if (newX == position.getX() && newY == position.getY()) {
-                    // Foxy intenta cruzar el río, bloquea el movimiento
-                    System.out.println("Foxy no puede cruzar el río!");
-                }
             }
         }
 
@@ -309,34 +318,31 @@ public class Foxy {
         this.paint = paint;
     }
 
-    public void collisionsScene2(){
+    public void generalCollisionsInScene2(){
+        /**
+         * //Horizontal ("Y" does not change in coordinates, except if it starts or ends at some end of the width)
+         * //Vertical ("X" does not change in coordinates)
+         */
         //Primera pared superior (la pared blanca de la izquierda)
-        if (newY < VBar.getInstance().getPosition1().getY() && newX < HBar.instance.getPosition1().getX()) {
-            newY = VBar.getInstance().getPosition1().getY();
-        }
-        if (newX < VBar.instance.getPosition1().getX() && newY < VBar.getInstance().getPosition1().getY()) { //Pared adyacente a la segunda pared blanca
-            newX = VBar.instance.getPosition1().getX();
-        }
-
-        //Primer piso (el piso debajo de la primera pared blanca)
-        if (newY > VBar.instance.getPosition3().getY() && newX < HBar.instance.getPosition1().getX()) {
-            newY = VBar.instance.getPosition3().getY();
-        }
-        if (newX < VBar.instance.getPosition2().getX() && newY > VBar.instance.getPosition2().getY()) { //Pared iquierda del piso del centro
-            newX = VBar.instance.getPosition2().getX();
-        }
+        fromTo(0, 0.3819444446, 0.4557291667, 0.3819444446); //Horizontal
 
         //Segunda pared superior (la pared blanca de la derecha)
-        if (newX >= HBar.instance.getPosition2().getX() && newY < HBar.instance.getPosition2().getY()) {
-            newY = HBar.instance.getPosition2().getY();
-        }
+        fromTo(0.4557291667, 0.1279578183, 1, 0.1279578183); //Horizontal
 
-        //Tercer piso (el piso de la derecha)
-        if (newY > HBar.instance.getPosition3().getY() && newX > HBar.instance.getPosition3().getX()) {
-            newY = HBar.instance.getPosition3().getY() + 1;
-        } else if (newX >= VBar.instance.getPosition3().getX() && newY > VBar.instance.getPosition3().getY()) { //Pared derecha del piso del centro
-            newX = VBar.instance.getPosition3().getX();
-        }
+        //Pared adyacente a la segunda pared blanca
+        fromTo(0.4557291667, 0.1279578183, 0.4557291667, 0.3819444446); //Vertical
+
+        //Primer piso (el piso debajo de la primera pared blanca)
+        fromTo(0, 0.7002314815, 0.458984375, 0.7002314815); //Horizontal
+
+        //Tercer piso (el piso a la parte derecha del tunel del escenario 2)
+        fromTo(0.7811197917, 0.7071759259, 1, 0.7071759259); //Horizontal
+
+        //Pared iquierda del tunel para salir al escenario 1
+        fromTo(0.458984375, 0.7002314815, 0.458984375, 0.8680555556); //Vertical
+
+        //Pared derecha del tunel para salir al escenario 1
+        fromTo(0.7811197917, 0.7071759259,0.7811197917, 0.8680555556); //Vertical
     }
 
     //Este metodo es para cuando el canva cambie sus dimensiones (para que foxy no se mueva de posición)
@@ -402,18 +408,6 @@ public class Foxy {
         x2 *= canvasWidth;
         y2 *= canvasHeight;
 
-        /*
-        1
-         = 411.11111113420765;
-         = 265.0000000751993;
-
-         2
-         = 291.1111111280638;
-         = 375.0000000364796;
-
-         */
-
-
          //||
         //intersectsLine(newX, newY, position.getX(), position.getY(), x1, y1, x2, y2)
         // Verificar si Foxy intenta cruzar el río
@@ -439,7 +433,14 @@ public class Foxy {
     }
 
     public void diagonalCollisions(){
-        //River
+        diagonalCollisionsBR();
+        diagonalCollisionsSR();
+        diagonalCollisionsMA();
+
+    }
+
+    public void diagonalCollisionsBR() {
+        //Big River
         //Diagonal 1
         fromTo(0.3002025463, 0.7581018518, 0.326244213, 0.7233796296);
         //Diagonal 2
@@ -454,7 +455,14 @@ public class Foxy {
         fromTo(0.834056713, 0.3993055556, 0.8991608797, 0.4918981482);
         //Diagonal 7 0.9421296296
         fromTo(0.4791666666, 0.8148148148, 0.5247395833, 1);
+    }
 
+    public void diagonalCollisionsSR() {
+        //Small River
+        //Diagonal 1
+    }
+
+    public void diagonalCollisionsMA(){
         //Mountain A
         //Diagonal 8
         fromTo(0.0853587963, 0.4918981482, 0.130931713, 0.4456018519);
@@ -462,9 +470,5 @@ public class Foxy {
         fromTo(0.228587963, 0.3645833334, 0.267650463, 0.306712963);
         //Diagonal 10
         fromTo(0.2220775463, 0.09259259256, 0.2611400463, 0.1388888888);
-
     }
-
-
-
 }

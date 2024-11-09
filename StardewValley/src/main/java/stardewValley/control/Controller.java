@@ -2,12 +2,10 @@ package stardewValley.control;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import stardewValley.model.Foxy;
-import stardewValley.model.VBar;
 import stardewValley.screens.*;
 import stardewValley.screens.ScreenB;
 

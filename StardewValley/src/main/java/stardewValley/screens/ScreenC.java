@@ -65,11 +65,19 @@ public class ScreenC extends SceneBase{
     }
 
     private void rocks(Canvas canvas){
-        rockA = new Rock(canvas, 0.5013020834, 0.1967592592, 0);
-        rockB = new Rock(canvas, 0.2799479167, 0.09259259256, 0);
-        rockC = new Rock(canvas, 0.8203125, 0.3703703702, 0);
-        rockD = new Rock(canvas, 0.3190104167, 0.4745370369, 0);
-        rockE = new Rock(canvas, 0.05208333333, 0.1504629629, 5);
+        rockA = new Rock(canvas, 0.5013020834, 0.1967592592, 0, 0.02604166667, 0.0462962963);
+        rockB = new Rock(canvas, 0.2799479167, 0.09259259256, 0, 0.03255208333, 0.05787037037);
+        rockC = new Rock(canvas, 0.8203125, 0.3703703702, 0, 0.0390625, 0.06944444444);
+        rockD = new Rock(canvas, 0.3190104167, 0.4745370369, 0, 0.04557291667, 0.08101851852);
+        rockE = new Rock(canvas, 0.05208333333, 0.1504629629, 5, 0.05208333333, 0.09259259259);
+    }
+
+    private void drawRock(){
+        rockA.otherDraw();
+        rockB.otherDraw();
+        rockC.otherDraw();
+        rockD.otherDraw();
+        rockE.otherDraw();
     }
 
     private void reloadRocks(boolean reload){
@@ -79,14 +87,5 @@ public class ScreenC extends SceneBase{
         rockD.setPaint(reload);
         rockE.setPaint(reload);
     }
-
-    private void drawRock(){
-        rockA.draw();
-        rockB.draw();
-        rockC.draw();
-        rockD.draw();
-        rockE.draw();
-    }
-
 
 }

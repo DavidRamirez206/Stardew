@@ -271,12 +271,6 @@ public class Foxy {
         newX = position.getX();
         newY = position.getY();
 
-        /*
-        canvasWidth = canvas.getWidth();
-        canvasHeight = canvas.getHeight();
-
-         */
-
         double my = 0.01157407407 * canvasHeight;
         double mx = 0.006510416667 * canvasWidth;
 
@@ -319,9 +313,9 @@ public class Foxy {
     }
 
     public void generalCollisionsInScene2(){
-        /**
-         * //Horizontal ("Y" does not change in coordinates, except if it starts or ends at some end of the width)
-         * //Vertical ("X" does not change in coordinates)
+        /*
+             * //Horizontal ("Y" does not change in coordinates, except if it starts or ends at some end of the width)
+             * //Vertical ("X" does not change in coordinates)
          */
         //Primera pared superior (la pared blanca de la izquierda)
         fromTo(0, 0.3819444446, 0.4557291667, 0.3819444446); //Horizontal
@@ -375,8 +369,6 @@ public class Foxy {
         changePosition = false;
     }
 
-
-
     public void setChangePosition(boolean changePosition){
         this.changePosition = changePosition;
     }
@@ -408,11 +400,7 @@ public class Foxy {
         x2 *= canvasWidth;
         y2 *= canvasHeight;
 
-         //||
-        //intersectsLine(newX, newY, position.getX(), position.getY(), x1, y1, x2, y2)
-        // Verificar si Foxy intenta cruzar el río
         if (intersectsLine(position.getX(), position.getY(), newX, newY, x1, y1, x2, y2)) {
-            // Si hay intersección, ajustar las posiciones para que no cruce el río
             newX = position.getX();
             newY = position.getY();
         }
@@ -453,7 +441,7 @@ public class Foxy {
         fromTo(0.7819733797, 0.3472222221, 0.8080150463, 0.3993055556);
         //Diagonal 6
         fromTo(0.834056713, 0.3993055556, 0.8991608797, 0.4918981482);
-        //Diagonal 7 0.9421296296
+        //Diagonal 7
         fromTo(0.4791666666, 0.8148148148, 0.5247395833, 1);
     }
 

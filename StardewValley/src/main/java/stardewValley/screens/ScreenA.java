@@ -6,14 +6,17 @@ import javafx.scene.input.KeyEvent;
 import stardewValley.control.Controller;
 import stardewValley.model.Foxy;
 import stardewValley.model.House;
+import stardewValley.model.Tree;
 
 public class ScreenA extends SceneBase {
 
     private House house;
+    private Tree tree;
 
     public ScreenA(Canvas canvas, String img, Foxy foxy) {
         super(canvas, img, foxy);
-        house = new House(canvas);
+        house = new House(canvas, "/img/object/halfHouse1", "/img/object/halfHouse2", 0.5, 0.3993055556, 0.1302083332, 0.1157407408);
+        tree = new Tree(canvas, "/img/object/tree/1/Tree1", "/img/object/tree/1/Tree2",  0.37109375, 0.4513888887, 0.1302083332, 0.1157407408);
         draw();
     }
 
@@ -26,9 +29,11 @@ public class ScreenA extends SceneBase {
     public void redraw(){
         super.gcUpdate();
         //super.foxy.updatePosition();
-        house.draw1();
-        super.foxyRedraw();
+        tree.draw2();
         house.draw2();
+        super.foxyRedraw();
+        house.draw1();
+        tree.draw1();
     }
 
     @Override
@@ -36,10 +41,11 @@ public class ScreenA extends SceneBase {
         //this.foxy.updatePosition();
 
         this.house.setPaint(false);
-        this.house.setPaint2(false);
+        this.house.setPaint(false);
+        this.tree.setPaint(false);
     }
 
-    @Override
+     @Override
     public void onKeyPressed(KeyEvent event){
 
         if (event.getCode() == KeyCode.SPACE){

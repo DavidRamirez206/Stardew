@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0"
@@ -14,8 +16,20 @@
     <children>
         <Canvas fx:id="canvas" focusTraversable="true"
                 height="389.0" layoutX="4.0" layoutY="5.0" width="588.0" />
+
+        <!-- VBox para los indicadores -->
+        <VBox layoutX="10.0" layoutY="10.0" spacing="10.0">
+            <Label text="Puntaje:" fx:id="scoreLabel"/>
+            <Label text="Piedra:" fx:id="stoneLabel"/>
+            <Label text="Madera:" fx:id="woodLabel"/>
+            <Label text="Vida de Foxy:" fx:id="foxyHealthLabel"/>
+            <Label text="Durabilidad de la herramienta:" fx:id="toolDurabilityLabel"/>
+        </VBox>
+
+        <!-- Botón de la mochila en la parte derecha -->
+        <Button fx:id="backpackButton" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;"
+                onAction="#onBackpackButtonClick"/>
+
     </children>
-    <VBox>
-        <Button text="hhh"></Button>
-    </VBox>
 </AnchorPane>

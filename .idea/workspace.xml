@@ -5,17 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="829be2ee-55f5-4993-9f78-33e42b02b5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Obstacle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Axe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Pickaxe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Obstacle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Rock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenA.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/halfHouse1.png" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/halfHouse1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/halfHouse2.png" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/halfHouse2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/controller-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/controller-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/run/runL/player-run-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/run/runL/player-run-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/background/scene2Background.png" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/img/background/scene2Background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/tree/8/Tree1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/object/tree/8/Tree2.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +61,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -128,7 +136,18 @@
       <workItem from="1731080293071" duration="932000" />
       <workItem from="1731086514905" duration="390000" />
       <workItem from="1731093884605" duration="4653000" />
-      <workItem from="1731172581527" duration="22549000" />
+      <workItem from="1731172581527" duration="23290000" />
+      <workItem from="1731210046785" duration="1068000" />
+      <workItem from="1731256889330" duration="839000" />
+      <workItem from="1731261431631" duration="2899000" />
+      <workItem from="1731275274857" duration="4070000" />
+      <workItem from="1731284679760" duration="1297000" />
+      <workItem from="1731367145231" duration="297000" />
+      <workItem from="1731372763068" duration="2960000" />
+      <workItem from="1731378936059" duration="16916000" />
+      <workItem from="1731397497238" duration="15000" />
+      <workItem from="1731398233043" duration="454000" />
+      <workItem from="1731415911437" duration="1744000" />
     </task>
     <servers />
   </component>

@@ -52,8 +52,9 @@ public class Rock extends Obstacle {
 
             gc.drawImage(half1, position.getX(), position.getY());
         }
-
-
     }
+
+    @Override
+    public void otherDraw2(){}
 
 }

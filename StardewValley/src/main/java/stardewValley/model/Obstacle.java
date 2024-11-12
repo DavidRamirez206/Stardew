@@ -31,8 +31,17 @@ public abstract class Obstacle {
         this.gc = canvas.getGraphicsContext2D();
         this.position = new Position(100, 100);
         this.position2 = new Position(100, 100);
-        this.paint = false;
-        this.paint2 = false;
+    }
+
+    public Obstacle(Canvas canvas, String basePath, double positionX, double positionY, double sW, double sH) {
+        this.canvas = canvas;
+        this.sW = sW;
+        this.sH = sH;
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.basePath = basePath;
+        this.gc = canvas.getGraphicsContext2D();
+        this.position = new Position(100, 100);
     }
 
     public Obstacle(Canvas canvas, double positionX, double positionY, int type, int nObjects, double sW, double sH) {
@@ -44,13 +53,14 @@ public abstract class Obstacle {
         this.positionY = positionY;
         ramdonType(type, nObjects);
         this.position = new Position(100, 100);
+        this.position2 = new Position(100, 100);
     }
 
     private void ramdonType(int type, int n){
         if(type != 0){
             this.type=type;
         } else {
-            this.type = new Random().nextInt(n) + 1;
+            this.type = new Random().nextInt(n) + 1; //Without n + 1: 0 until n ---- With n + 1: 1 until n
         }
     }
 
@@ -77,9 +87,12 @@ public abstract class Obstacle {
         position.setX((canvas.getWidth() * positionX) - (sizeW / 2));
         position.setY(canvas.getHeight() * positionY);
 
-        position2.setX(position.getX());
+        if(position2 != null){
+            position2.setX(position.getX());
 
-        position2.setY(position.getY() + sizeH);
+            position2.setY(position.getY() + sizeH);
+        }
+
 
     }
 
@@ -111,9 +124,15 @@ public abstract class Obstacle {
     }
 
     public abstract void otherDraw();
+    public abstract void otherDraw2();
+
 
     public void  setPaint(boolean b){
         this.paint = b;
         this.paint2 = b;
+    }
+
+    public boolean getCut(){
+        return cut;
     }
 }

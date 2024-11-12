@@ -13,14 +13,17 @@ public class Foxy {
     //Graphic elements
     private Canvas canvas;
     private GraphicsContext gc;
+    private double score, health;
+    private int stones, wood, toolDurability;
+
 
     private ArrayList<Image> climb;
 
-    private ArrayList<Image> idlesR;
-    private ArrayList<Image> idlesL;
+    private ArrayList<Image> idlesL, idlesL_WithAxe, idlesL_WithPickAxe;
+    private ArrayList<Image> idlesR, idlesR_WithAxe, idlesR_WithPickAxe;
 
-    private ArrayList<Image> runsR;
-    private ArrayList<Image> runsL;
+    private ArrayList<Image> runsL, runsL_WithAxe, runsL_WithPickAxe;
+    private ArrayList<Image> runsR, runsR_WithAxe, runsR_WithPickAxe;
 
 
     private Position position;
@@ -30,7 +33,8 @@ public class Foxy {
 
     private int frame;
 
-    private State state;
+    private State state, state2;
+    private boolean toolTaken;
 
     //Keys and boolean
     private boolean rightPressed;
@@ -52,6 +56,7 @@ public class Foxy {
 
 
     public Foxy(Canvas canvas) {
+        this.health = 100;
         this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
         initArrayList();
@@ -65,9 +70,21 @@ public class Foxy {
 
     private void initArrayList(){
         this.idlesR = new ArrayList<>();
+        this.idlesR_WithAxe = new ArrayList<>();
+        this.idlesR_WithPickAxe = new ArrayList<>();
+
         this.idlesL = new ArrayList<>();
+        this.idlesL_WithAxe = new ArrayList<>();
+        this.idlesL_WithPickAxe = new ArrayList<>();
+
         this.runsR = new ArrayList<>();
+        this.runsR_WithAxe = new ArrayList<>();
+        this.runsR_WithPickAxe = new ArrayList<>();
+
         this.runsL = new ArrayList<>();
+        this.runsL_WithAxe = new ArrayList<>();
+        this.runsL_WithPickAxe = new ArrayList<>();
+
         this.climb = new ArrayList<>();
     }
 
@@ -81,30 +98,136 @@ public class Foxy {
 
     private void setAnimations() {
         climb = loadImages("/img/Characters/Foxy/Sprites/climb/player-climb-", 3);
-        idlesR = loadImages("/img/Characters/Foxy/Sprites/idle/idlR/player-idle-", 4);
-        idlesL = loadImages("/img/Characters/Foxy/Sprites/idle/idlL/player-idle-", 4);
-        runsR = loadImages("/img/Characters/Foxy/Sprites/run/runR/player-run-", 6);
-        runsL = loadImages("/img/Characters/Foxy/Sprites/run/runL/player-run-", 6);
+        loadIdles();
+        loadRuns();
     }
 
+    private void loadIdles(){
+        idlesR = loadImages("/img/Characters/Foxy/Sprites/idle/idlR/player-idle-", 4);
+        idlesR_WithAxe = loadImages("/img/Characters/Foxy/Sprites/idle/idlR_StoneAxe/player-idle-", 4);
+        idlesR_WithPickAxe = loadImages("/img/Characters/Foxy/Sprites/idle/idlR_StonePickAxe/player-idle-", 4);
+
+        idlesL = loadImages("/img/Characters/Foxy/Sprites/idle/idlL/player-idle-", 4);
+        idlesL_WithAxe = loadImages("/img/Characters/Foxy/Sprites/idle/idlL_StoneAxe/player-idle-", 4);
+        idlesL_WithPickAxe = loadImages("/img/Characters/Foxy/Sprites/idle/idlL_StonePickAxe/player-idle-", 4);
+    }
+
+    private void loadRuns(){
+        runsR = loadImages("/img/Characters/Foxy/Sprites/run/runR/player-run-", 6);
+        runsR_WithAxe = loadImages("/img/Characters/Foxy/Sprites/run/runR_StoneAxe/player-run-", 6);
+        runsR_WithPickAxe = loadImages("/img/Characters/Foxy/Sprites/run/runR_StonePickAxe/player-run-", 6);
+
+        runsL = loadImages("/img/Characters/Foxy/Sprites/run/runL/player-run-", 6);
+        runsL_WithAxe = loadImages("/img/Characters/Foxy/Sprites/run/runL_StoneAxe/player-run-", 6);
+        runsL_WithPickAxe = loadImages("/img/Characters/Foxy/Sprites/run/runL_StonePickAxe/player-run-", 6);
+    }
+
+    private void idlesClear(){
+        idlesR.clear();
+        idlesR_WithAxe.clear();
+        idlesR_WithPickAxe.clear();
+
+        idlesL.clear();
+        idlesL_WithAxe.clear();
+        idlesL_WithPickAxe.clear();
+    }
+
+    private void runsClear(){
+        runsR.clear();
+        runsR_WithAxe.clear();
+        runsR_WithPickAxe.clear();
+
+        runsL.clear();
+        runsL_WithAxe.clear();
+        runsL_WithPickAxe.clear();
+    }
+
+    private void updateAnimations() {
+        idlesClear();
+        runsClear();
+        climb.clear();
+
+        this.foxySizeW = canvas.getWidth() * WIDTH_PROPORTION;
+        this.foxySizeH = canvas.getHeight() * HEIGHT_PROPORTION;
+        setAnimations();
+        paint = true;
+    }
+
+    private ArrayList<Image> animations(){
+        ArrayList<Image> images = new ArrayList<>();
+        if(state.equals(State.STATIC)){
+
+            if(toolTaken){
+                if(lookAtRight){
+                    switch(state2){
+                        case WITH_AXE -> {
+                            images = idlesR_WithAxe;
+                        }
+                        case WITH_PICKAXE -> {
+                            images = idlesR_WithPickAxe;
+                        }
+                    }
+                } else {
+                    switch(state2){
+                        case WITH_AXE -> {
+                            images = idlesL_WithAxe;
+                        }
+                        case WITH_PICKAXE -> {
+                            images = idlesL_WithPickAxe;
+                        }
+                    }
+                }
+            } else {
+                if(lookAtRight){
+                    images = idlesR;
+                } else {
+                    images = idlesL;
+                }
+            }
+
+        } else if (state.equals(State.RUNNING)){
+            if(toolTaken){
+                if(lookAtRight){
+                    switch(state2){
+                        case WITH_AXE -> {
+                            images = runsR_WithAxe;
+                        }
+                        case WITH_PICKAXE -> {
+                            images = runsR_WithPickAxe;
+                        }
+                    }
+                } else {
+                    switch(state2){
+                        case WITH_AXE -> {
+                            images = runsL_WithAxe;
+                        }
+                        case WITH_PICKAXE -> {
+                            images = runsL_WithPickAxe;
+                        }
+                    }
+                }
+            } else {
+                if(lookAtRight){
+                    images = runsR;
+                } else {
+                    images = runsL;
+                }
+            }
+        } else if (state.equals(State.CLIMBING)){
+            images = climb;
+        }
+
+        return images;
+    }
 
     public void draw() {
         if (!paint) {
-
-            idlesL.clear();
-            idlesR.clear();
-            runsR.clear();
-            runsL.clear();
-            climb.clear();
-
-            this.foxySizeW = canvas.getWidth() * WIDTH_PROPORTION;
-            this.foxySizeH = canvas.getHeight() * HEIGHT_PROPORTION;
-            setAnimations();
-            paint = true;
+            updateAnimations();
         }
 
         onMove();
-        ArrayList<Image> currentAnimation = new ArrayList<>();
+        ArrayList<Image> currentAnimation = animations();
+        /*
         if(state.equals(State.STATIC)){
             if(lookAtRight == true){
                 currentAnimation = idlesR;
@@ -120,6 +243,8 @@ public class Foxy {
         } else if(state.equals(State.CLIMBING)) {
             currentAnimation = climb;
         }
+
+         */
 
         gc.drawImage(currentAnimation.get(frame % currentAnimation.size()), position.getX(), position.getY());
         frame++;
@@ -424,7 +549,7 @@ public class Foxy {
         diagonalCollisionsBR();
         diagonalCollisionsSR();
         diagonalCollisionsMA();
-
+        horizontalCollisions();
     }
 
     public void diagonalCollisionsBR() {
@@ -458,5 +583,85 @@ public class Foxy {
         fromTo(0.228587963, 0.3645833334, 0.267650463, 0.306712963);
         //Diagonal 10
         fromTo(0.2220775463, 0.09259259256, 0.2611400463, 0.1388888888);
+        fromTo(0.2220775463, 0.09837962979, 0.1634837963, 0);
+    }
+
+    private void horizontalCollisions(){
+        fromTo(0, 0.7523148146, 0.130931713, 0.7523148146);
+        fromTo(0, 0.8101851852, 0.130931713, 0.8101851852);
+
+        fromTo(0.169994213, 0.7523148146, 0.2994791667, 0.7523148146);
+        fromTo(0.169994213, 0.8101851852, 0.3718171296, 0.8101851852);
+
+        fromTo(0.3255208333, 0.7233796296, 0.3645833334, 0.7233796296);
+
+        fromTo(0.4036458334, 0.7233796296, 0.48828125, 0.7233796296);
+        fromTo(0.4036458334, 0.8159722221, 0.48828125, 0.8159722221);
+
+        fromTo(0.5338541667, 0.6076388889, 0.5794270834, 0.6076388889);
+        fromTo(0.6184895834, 0.46875, 0.6770833334, 0.46875);
+
+        fromTo(0.91796875, 0.1678240742, 1, 0.1678240742);
+        fromTo(0.8919270834, 0.4803240741, 1, 0.4803240741);
+
+        fromTo(0.4231770834, 0.1041666666, 0.3190104167, 0.1041666666);
+        fromTo(0.2669270833
+                , 0.1736111111, 0.3190104167, 0.1736111111);
+    }
+
+    public void setState2(int i){
+        this.state2 = State.values()[i];
+    }
+
+    public void setToolTaken(boolean toolTaken){
+        this.toolTaken = toolTaken;
+    }
+
+    public boolean getToolTaken(){
+        return toolTaken;
+    }
+
+    public State getState2(){
+        return state2;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public double getHealth() {
+        return health;
+    }
+
+    public void setHealth(double health) {
+        this.health = health;
+    }
+
+    public int getStones() {
+        return stones;
+    }
+
+    public void setStones(int stones) {
+        this.stones = stones;
+    }
+
+    public int getWood() {
+        return wood;
+    }
+
+    public void setWood(int wood) {
+        this.wood = wood;
+    }
+
+    public int getToolDurability() {
+        return toolDurability;
+    }
+
+    public void setToolDurability(int toolDurability) {
+        this.toolDurability = toolDurability;
     }
 }

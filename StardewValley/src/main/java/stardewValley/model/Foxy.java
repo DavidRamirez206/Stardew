@@ -376,16 +376,19 @@ public class Foxy {
             } else {
 
                 climbScene3();
-                diagonalCollisions();
+                diagonalCollisions3();
             }
         }
 
+        /*
         System.out.println("--------------------------");
         System.out.println("Position x:" + newX);
         System.out.println("Position y:" + newY);
         System.out.println("--------------------------");
         System.out.println("Canvas width:" + canvasWidth);
         System.out.println("Canvas height:" + canvasHeight);
+
+         */
 
         position.setX(newX);
         position.setY(newY);
@@ -462,6 +465,8 @@ public class Foxy {
 
         //Pared derecha del tunel para salir al escenario 1
         fromTo(0.7811197917, 0.7071759259,0.7811197917, 0.8680555556); //Vertical
+
+        collisions2();
     }
 
     //Este metodo es para cuando el canva cambie sus dimensiones (para que foxy no se mueva de posición)
@@ -545,11 +550,44 @@ public class Foxy {
         return s >= 0 && s <= 1 && t >= 0 && t <= 1;
     }
 
-    public void diagonalCollisions(){
+    public void collisions2(){
+
+        fromTo(0.234375, 0.6944444445, 0.2473958333, 0.601851852);
+        fromTo(0.2473958333, 0.601851852, 0.3059895833, 0.601851852);
+        fromTo(0.3059895833, 0.601851852, 0.3580729167, 0.613425926);
+        fromTo(0.3580729167, 0.613425926, 0.390625, 0.6365740742);
+        fromTo(0.390625, 0.6365740742, 0.390625, 0.6979166667);
+
+        //Table 1
+        //Diagonal inferior L
+        fromTo(0.5794270834, 0.5092592591, 0.60546875, 0.5902777776);
+        //Horizontal inferior L
+        fromTo(0.60546875, 0.5902777776, 0.6575520834, 0.5902777776);
+        //Diagonal inferior R
+        fromTo(0.6575520834, 0.5902777776, 0.68359375, 0.5439814813);
+        //Lateral R
+        fromTo(0.68359375, 0.5439814813, 0.68359375, 0.3009259258);
+        //Horizontal superior
+        fromTo(0.68359375, 0.3009259258, 0.5794270834, 0.3009259258);
+        //Lateral L
+        fromTo(0.5794270834, 0.3009259258, 0.5794270834, 0.5092592591);
+
+        //Tables 1 and 2
+        //Horizontal inferior
+        fromTo(0.8333333334, 0.659722222, 0.9440104167, 0.659722222);
+        //Horizontal superior
+        fromTo(0.8333333334, 0.3587962962, 0.9440104167, 0.3587962962);
+        //Lateral L
+        fromTo(0.8333333334, 0.659722222, 0.8333333334, 0.3587962962);
+        //Lateral R
+        fromTo(0.9440104167, 0.659722222, 0.9440104167, 0.3587962962);
+    }
+
+    public void diagonalCollisions3(){
         diagonalCollisionsBR();
         diagonalCollisionsSR();
         diagonalCollisionsMA();
-        horizontalCollisions();
+        horizontalCollisions3();
     }
 
     public void diagonalCollisionsBR() {
@@ -586,7 +624,7 @@ public class Foxy {
         fromTo(0.2220775463, 0.09837962979, 0.1634837963, 0);
     }
 
-    private void horizontalCollisions(){
+    private void horizontalCollisions3(){
         fromTo(0, 0.7523148146, 0.130931713, 0.7523148146);
         fromTo(0, 0.8101851852, 0.130931713, 0.8101851852);
 
@@ -605,8 +643,17 @@ public class Foxy {
         fromTo(0.8919270834, 0.4803240741, 1, 0.4803240741);
 
         fromTo(0.4231770834, 0.1041666666, 0.3190104167, 0.1041666666);
-        fromTo(0.2669270833
-                , 0.1736111111, 0.3190104167, 0.1736111111);
+        fromTo(0.2669270833, 0.1736111111, 0.3190104167, 0.1736111111);
+
+        //Piedras del río
+        fromTo(0.7747395834, 0.3530092593, 0.7747395834, 0.6539351852);
+        fromTo(0.736400463, 0.3530092593, 0.736400463, 0.6539351852);
+
+        fromTo(0.4075520833, 0.7175925923, 0.4075520833, 0.8101851852);
+        fromTo(0.3684895833, 0.7175925923, 0.3684895833, 0.8101851852);
+
+        fromTo(0.1666666666, 0.7638888889, 0.1666666666, 0.8101851852);
+        fromTo(0.1276041666, 0.7638888889, 0.1276041666, 0.8101851852);
     }
 
     public void setState2(int i){
@@ -663,5 +710,13 @@ public class Foxy {
 
     public void setToolDurability(int toolDurability) {
         this.toolDurability = toolDurability;
+    }
+
+    public double getFoxySizeH(){
+        return foxySizeH;
+    }
+
+    public double getFoxySizeW(){
+        return foxySizeW;
     }
 }

@@ -65,6 +65,7 @@ public class ScreenA extends SceneBase {
         super.foxyRedraw();
         house.draw1();
         drawTree1();
+        checkForCutting();
         //trees.get(0).otherDraw();
     }
 
@@ -112,6 +113,16 @@ public class ScreenA extends SceneBase {
         for (Tree tree : trees) {
             if(!tree.getCut()){
                 tree.otherDraw2();
+            }
+        }
+    }
+
+    public void checkForCutting() {
+        for (Tree tree : trees) {
+            if (tree.isFoxyInside(foxy.getPosition(), foxy.getFoxySizeW(), foxy.getFoxySizeH())){
+                if(!tree.getCut()){
+                    System.out.println("Foxy Inside Tree");
+                }
             }
         }
     }

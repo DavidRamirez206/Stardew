@@ -166,6 +166,7 @@ public class ScreenC extends SceneBase{
             if(!foxy.getToolTaken()){
                 pAxT = true;
                 foxy.setToolTaken(true);
+                foxy.setToolDurability(pickaxe.getDurability());
                 foxy.setState2(6);
             }
         }

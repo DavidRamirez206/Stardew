@@ -78,7 +78,7 @@ public class Controller implements Initializable {
                     stoneLabel.setText("Stones: " + foxy.getStones());
                     woodLabel.setText("Wood: " + foxy.getWood());
                     foxyHealthLabel.setText("Health: " + foxy.getHealth() + "%");
-                    toolDurabilityLabel.setText("Durability: " + foxy.getToolDurability());
+                    toolDurabilityLabel.setText("Durability: " + foxy.getToolDurability() + "%");
                 });
 
                 try {

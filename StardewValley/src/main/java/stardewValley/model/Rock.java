@@ -57,4 +57,23 @@ public class Rock extends Obstacle {
     @Override
     public void otherDraw2(){}
 
+    @Override
+    public boolean isFoxyInside(Position foxyPosition, double foxySizeW, double foxySizeH) {
+        return foxyPosition.getX() + foxySizeW > position.getX() && foxyPosition.getX() < position.getX() +
+                sizeW && foxyPosition.getY() + foxySizeH > position.getY() && foxyPosition.getY() < position.getY() + sizeH;
+    }
+
+    @Override
+    public boolean handleCutting(Position foxyPosition, double foxySizeW, double foxySizeH, String tool, boolean isFoxyCutting) {
+        if (isFoxyInside(foxyPosition, foxySizeW, foxySizeH)) {
+            if(!cut){
+                if(isFoxyCutting && tool.equalsIgnoreCase("pickaxe")){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }

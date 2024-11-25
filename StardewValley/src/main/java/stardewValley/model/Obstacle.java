@@ -20,6 +20,9 @@ public abstract class Obstacle {
 
     protected int type;
 
+    protected double durability = 100;
+    protected int kicked;
+
     public Obstacle(Canvas canvas, String basePath, String basePath2, double positionX, double positionY, double sW, double sH) {
         this.canvas = canvas;
         this.sW = sW;
@@ -134,18 +137,35 @@ public abstract class Obstacle {
         return cut;
     }
 
-    // Metodo para detectar si Foxy está dentro del cuadro imaginario
-    public boolean isFoxyInside(Position foxyPosition, double foxySizeW, double foxySizeH) {
-        return foxyPosition.getX() + foxySizeW > position.getX() && foxyPosition.getX() < position.getX() +
-                sizeW && foxyPosition.getY() + foxySizeH > position.getY() + (sizeH) && foxyPosition.getY() < position.getY() + (2 * sizeH);
+    public void setCut(boolean cut){
+        this.cut = cut;
     }
+
+    // Metodo para detectar si Foxy está dentro del cuadro imaginario
+    public abstract boolean isFoxyInside(Position foxyPosition, double foxySizeW, double foxySizeH);
+
     // Metodo para manejar la acción de cortar/picar
-    public void handleCutting(Position foxyPosition, double foxySizeW, double foxySizeH, String tool) {
-        if (isFoxyInside(foxyPosition, foxySizeW, foxySizeH)) {
-            if (tool.equals("axe") || tool.equals("pickaxe")) {
-                this.cut = true;
-                System.out.println("The object has been cut!");
-            }
+    public abstract boolean handleCutting(Position foxyPosition, double foxySizeW, double foxySizeH, String tool, boolean isFoxyCutting);
+
+    public double getDurability(){
+        return durability;
+    }
+
+    public void setDurability(){
+        double newDurability = new Random().nextDouble(5.0);
+        if(durability - newDurability < 0){
+            this.durability = 0;
+            cut = false;
+        } else {
+            this.durability -= newDurability;
         }
+    }
+
+    public int getKicked() {
+        return kicked;
+    }
+
+    public void setKicked(int kicked) {
+        this.kicked += kicked;
     }
 }

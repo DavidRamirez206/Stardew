@@ -60,7 +60,7 @@ public class StardewValley extends Application {
     public void changeScene(int sceneId) {
         MAIN_SCENE = sceneId;
         try {
-            loadScene(stage, MAIN_SCENE); // Llama a loadScene de nuevo para cambiar de escena
+            loadScene(stage, MAIN_SCENE);
         } catch (IOException e) {
             e.printStackTrace();
         }

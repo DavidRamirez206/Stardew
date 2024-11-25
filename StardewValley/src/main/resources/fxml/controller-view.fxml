@@ -17,19 +17,14 @@
         <Canvas fx:id="canvas" focusTraversable="true"
                 height="389.0" layoutX="4.0" layoutY="5.0" width="588.0" />
 
-        <!-- VBox para los indicadores -->
+        <!--Indicadores -->
         <VBox layoutX="10.0" layoutY="10.0" spacing="10.0">
-            <Label text="Puntaje:" fx:id="scoreLabel"/>
-            <Label text="Piedra:" fx:id="stoneLabel"/>
-            <Label text="Madera:" fx:id="woodLabel"/>
-            <Label text="Vida de Foxy:" fx:id="foxyHealthLabel"/>
-            <Label text="Durabilidad de la herramienta:" fx:id="toolDurabilityLabel"/>
+            <Label text="" fx:id="scoreLabel"/>
+            <Label text="" fx:id="stoneLabel"/>
+            <Label text="" fx:id="woodLabel"/>
+            <Label text="" fx:id="foxyHealthLabel"/>
+            <Label text="" fx:id="toolDurabilityLabel"/>
         </VBox>
-
-        <!-- Botón de la mochila en la parte derecha -->
-        <Button fx:id="backpackButton" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0"
-                style="-fx-background-color: transparent; -fx-border-color: transparent;"
-                onAction="#onBackpackButtonClick"/>
 
     </children>
 </AnchorPane>

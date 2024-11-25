@@ -80,4 +80,22 @@ public class Tree extends Obstacle {
         }
     }
 
+    @Override
+    public boolean isFoxyInside(Position foxyPosition, double foxySizeW, double foxySizeH) {
+        return foxyPosition.getX() + foxySizeW > position.getX() && foxyPosition.getX() < position.getX() +
+                sizeW && foxyPosition.getY() + foxySizeH > position.getY() + (sizeH) && foxyPosition.getY() < position.getY() + (2 * sizeH);
+    }
+
+    @Override
+    public boolean handleCutting(Position foxyPosition, double foxySizeW, double foxySizeH, String tool, boolean isFoxyCutting) {
+        if (isFoxyInside(foxyPosition, foxySizeW, foxySizeH)) {
+                if(!cut){
+                    if(isFoxyCutting && tool.equalsIgnoreCase("axe")){
+                        return true;
+                    }
+                }
+        }
+
+        return false;
+    }
 }

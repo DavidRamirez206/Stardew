@@ -39,9 +39,9 @@ public class Instructions {
 
     private String[] instructions = {
 
-            //Do not remove spaces in messages.
+            // Do not remove spaces in messages.
 
-            //THEY ARE TO MAKE THE TEXT BETTER FOR VISIBILITY
+            // THEY ARE TO MAKE THE TEXT BETTER FOR VISIBILITY
 
             "Welcome to Stardew Valley.",
             "Use the \"UP\" key to \n\n       go up",
@@ -51,8 +51,17 @@ public class Instructions {
             "Use the \"SPACE\" key to attack",
             "Use the \"ENTER\" key to \n\n       interact",
             "...",
+            "Press 1 to hide your tools.",
+            "Press 2 to switch to the axe \n     (you must own it).",
+            "Press 3 to switch to the pickaxe \n        (you must own it).",
+            "Press F to chop or mine.",
+            "Press R to repair your tools:",
+            "- Axe: 10 wood, 10 stone.",
+            "- Pickaxe: 15 wood, 10 stone.",
+            "Do not let the durability reach 0%,\n    or you will lose the tool!",
             "Explore and have fun!",
     };
+
 
     @FXML
     public void initialize() {

@@ -17,12 +17,15 @@ public abstract class SceneBase {
     protected Image background;
 
     protected River river;
+    protected boolean firstTimeX, firstTimeY;
 
     public SceneBase(Canvas canvas, String img, Foxy foxy) {
         this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
         river = new River(canvas);
         this.running = true;
+        firstTimeX = true;
+        firstTimeY = true;
         this.foxy = foxy;
         this.loadIMG(img);
     }
@@ -36,6 +39,8 @@ public abstract class SceneBase {
         gc.drawImage(background, 0, 0, canvas.getWidth(), canvas.getHeight());
 
         canvas.widthProperty().addListener((obs, oldVal, newVal) -> {
+            firstPositionMovingObjectsX();
+
             updateFoxy();
             river.setPaint(false);
             updateObjects();
@@ -43,12 +48,24 @@ public abstract class SceneBase {
         });
 
         canvas.heightProperty().addListener((obs, oldVal, newVal) -> {
+            firstPositionMovingObjectsY();
             updateFoxy();
             river.setPaint(false);
             updateObjects();
             redraw();
         });
+
+        canvas.setOnMouseClicked(event -> {
+            double x = event.getX(); // X
+            double y = event.getY(); // Y
+
+            System.out.println("Coordenadas del clic -> X: " + x + ", Y: " + y);
+            System.out.println("Canvas: \nwidth: " + canvas.getWidth() + ", height: " + canvas.getHeight());
+        });
     }
+
+    protected abstract void firstPositionMovingObjectsX();
+    protected abstract void firstPositionMovingObjectsY();
 
     private void updateFoxy(){
         foxy.setChangePosition(true);

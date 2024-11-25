@@ -12,14 +12,15 @@ import java.util.List;
 public class ScreenC extends SceneBase{
 
     private PurplePortal portal;
-    private Rock rockE, rockD, rockC, rockB, rockA;
     private Pickaxe pickaxe;
     private Axe axe;
     private boolean axT, pAxT;
 
     private List<Tree> trees;
+    private List<Rock> rocks;
     private final int N_TREES = 6;
-    private Position[] positions = {
+    private final int N_ROCKS = 5;
+    private Position[] positionsTrees= {
             new Position(0.130931713, 0.1099537039),
             new Position(0.2611400463, 0.6886574074),
             new Position(0.4499421297, 0.5034722222),
@@ -27,6 +28,31 @@ public class ScreenC extends SceneBase{
             new Position(0.6647858797, 0.2372685186),
             new Position(0.3718171296, 0),
             new Position(0.7624421297, 0),
+    };
+
+    private Position[] positionsRocks= {
+            new Position(0.5013020834, 0.1967592592),
+            new Position(0.2799479167, 0.09259259256),
+            new Position(0.8203125, 0.3703703702),
+
+            new Position(0.3190104167, 0.4745370369),
+            new Position(0.05208333333, 0.1504629629),
+    };
+
+    private double[] rocksWidth= {
+            0.02604166667,
+            0.03255208333,
+            0.0390625,
+            0.04557291667,
+            0.05208333333
+    };
+
+    private double[] rocksHeight= {
+            0.0462962963,
+            0.05787037037,
+            0.06944444444,
+            0.08101851852,
+            0.09259259259
     };
 
     //For pickAxe
@@ -41,22 +67,32 @@ public class ScreenC extends SceneBase{
     private final double Z1 = 0;
     private final double Z2 = 0.04629629628;
 
-    public ScreenC(Canvas canvas, String img, Foxy foxy) {
+    public ScreenC(Canvas canvas, String img, Foxy foxy, Axe axe, Pickaxe pickaxe) {
         super(canvas, img, foxy);
+        this.axe = axe;
+        this.pickaxe = pickaxe;
         load(canvas);
-        tools(canvas);
-        portal.setYPosition(0.5902777776);
-        portal.setNewSizeH(1.5);
-        portal.setNewSizeW(1);
+        //tools(canvas);
         loadTrees();
+        loadRocks();
         draw();
     }
 
     private void loadTrees(){
         this.trees = new ArrayList<>();
         for (int i = 0; i < N_TREES; i++) {
-            Position position = positions[i];
+            Position position = positionsTrees[i];
             trees.add(new Tree(canvas, position.getX(), position.getY(), 0, 0.1302083332, 0.1157407408));
+        }
+    }
+
+    private void loadRocks(){
+        this.rocks = new ArrayList<>();
+        for (int i = 0; i < N_ROCKS; i++) {
+            Position position = positionsRocks[i];
+            double width = rocksWidth[i];
+            double height = rocksHeight[i];
+            rocks.add(new Rock(canvas, position.getX(), position.getY(), 0, width, height));
         }
     }
 
@@ -80,12 +116,15 @@ public class ScreenC extends SceneBase{
             axeTaken();
         }
         drawTree1();
+
+        checkForCuttingTree();
+        checkForCuttingRocks();
     }
 
     @Override
     public void updateObjects(){
         this.portal.setPaint(false);
-        reloadRocks(false);
+        reloadRocks();
         reloadTools(false);
         updateTrees();
     }
@@ -95,7 +134,7 @@ public class ScreenC extends SceneBase{
         super.foxy.onKeyPressed(event);
 
         if (event.getCode() == KeyCode.SPACE){
-            super.foxy.setScene(1);
+            super.foxy.setEsc(1);
             Controller.SCREEN = 0;
         }
     }
@@ -105,38 +144,38 @@ public class ScreenC extends SceneBase{
         super.foxy.onKeyReleased(event);
     }
 
-    private void load(Canvas canvas){
-        portal = new PurplePortal(canvas);
-        rocks(canvas);
+    @Override
+    protected void firstPositionMovingObjectsX() {
+        if(firstTimeX){
+            foxy.setFirstPosition(true);
+            firstTimeX = false;
+        }
     }
 
-    private void rocks(Canvas canvas){
-        rockA = new Rock(canvas, 0.5013020834, 0.1967592592, 0, 0.02604166667, 0.0462962963);
-        rockB = new Rock(canvas, 0.2799479167, 0.09259259256, 0, 0.03255208333, 0.05787037037);
-        rockC = new Rock(canvas, 0.8203125, 0.3703703702, 0, 0.0390625, 0.06944444444);
-        rockD = new Rock(canvas, 0.3190104167, 0.4745370369, 0, 0.04557291667, 0.08101851852);
-        rockE = new Rock(canvas, 0.05208333333, 0.1504629629, 5, 0.05208333333, 0.09259259259);
+    @Override
+    protected void firstPositionMovingObjectsY() {
+        if(firstTimeY){
+            foxy.setFirstPosition(true);
+            firstTimeY = false;
+        }
+    }
+
+    private void load(Canvas canvas){
+        portal = new PurplePortal(canvas, 0, 0.5902777776,1, 1.5);
     }
 
     private void drawRock(){
-        rockA.otherDraw();
-        rockB.otherDraw();
-        rockC.otherDraw();
-        rockD.otherDraw();
-        rockE.otherDraw();
+        for (Rock rock : rocks) {
+            if(!rock.getCut()){
+                rock.otherDraw();
+            }
+        }
     }
 
-    private void reloadRocks(boolean reload){
-        rockA.setPaint(reload);
-        rockB.setPaint(reload);
-        rockC.setPaint(reload);
-        rockD.setPaint(reload);
-        rockE.setPaint(reload);
-    }
-
-    private void tools(Canvas canvas){
-        this.axe = new Axe(canvas, "/img/object/Scene3/tools/StoneAxe", 0.8984375, 0.03472222221, 0.03255208333, 0.05787037037);
-        this.pickaxe = new Pickaxe(canvas, "/img/object/Scene3/tools/StonePickaxe", 0.21484375, 0.162037037, 0.03255208333, 0.05787037037);
+    private void reloadRocks(){
+        for (Rock rock : rocks){
+            rock.setPaint(false);
+        }
     }
 
     private void drawPickaxe(){
@@ -163,12 +202,10 @@ public class ScreenC extends SceneBase{
         double height = canvas.getHeight();
 
         if((positionX > (width * X1) && positionX < width * X2) && (positionY > (height * Y1) && positionY < height * Y2)){
-            if(!foxy.getToolTaken()){
-                pAxT = true;
-                foxy.setToolTaken(true);
-                foxy.setToolDurability(pickaxe.getDurability());
-                foxy.setState2(6);
-            }
+            pAxT = true;
+            foxy.setToolTaken(true);
+            foxy.setPick(true);
+            foxy.setState2(6);
         }
     }
 
@@ -179,11 +216,10 @@ public class ScreenC extends SceneBase{
         double height = canvas.getHeight();
 
         if((positionX > (width * W1) && positionX < width * W2) && (positionY > (height * Z1) && positionY < height * Z2)){
-            if(!foxy.getToolTaken()){
-                axT = true;
-                foxy.setToolTaken(true);
-                foxy.setState2(5);
-            }
+            axT = true;
+            foxy.setToolTaken(true);
+            foxy.setAxe(true);
+            foxy.setState2(5);
         }
     }
 
@@ -206,6 +242,42 @@ public class ScreenC extends SceneBase{
         for (Tree tree : trees) {
             if(!tree.getCut()){
                 tree.otherDraw2();
+            }
+        }
+    }
+
+    public void checkForCuttingTree() {
+        String tool = foxy.getStringTool();
+
+        for (Tree tree : trees) {
+            if(!tree.getCut() &&
+                    tree.handleCutting(foxy.getPosition(), foxy.getWidth(), foxy.getHeight(), tool, foxy.isCutting() && foxy.isAxe())){
+
+                foxy.getAxe().setDurability();
+                tree.setKicked(1);
+
+                if(tree.getKicked() == 5){
+                    foxy.setWood(40);
+                    tree.setCut(true);
+                }
+            }
+
+        }
+    }
+
+    public void checkForCuttingRocks() {
+        String tool = foxy.getStringTool();
+        for (Rock rock : rocks) {
+            if(!rock.getCut() &&
+                    rock.handleCutting(foxy.getPosition(), foxy.getWidth(), foxy.getHeight(), tool, foxy.isCutting())){
+
+                foxy.getPickaxe().setDurability();
+                rock.setKicked(1);
+
+                if (rock.getKicked() == 10){
+                    foxy.setStones(40);
+                    rock.setCut(true);
+                }
             }
         }
     }

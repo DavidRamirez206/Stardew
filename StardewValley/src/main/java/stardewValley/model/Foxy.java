@@ -1,20 +1,19 @@
 package stardewValley.model;
 
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import stardewValley.control.Controller;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-public class Foxy {
+public class Foxy extends CharacterMove {
 
     //Graphic elements
-    private Canvas canvas;
-    private GraphicsContext gc;
-    private double score, health;
-    private int stones, wood, toolDurability;
+
+    private double score;
+    private int stones, wood;
 
 
     private ArrayList<Image> climb;
@@ -25,50 +24,35 @@ public class Foxy {
     private ArrayList<Image> runsL, runsL_WithAxe, runsL_WithPickAxe;
     private ArrayList<Image> runsR, runsR_WithAxe, runsR_WithPickAxe;
 
+    private ArrayList<Image> hurt;
 
-    private Position position;
-    private double foxySizeH;
-    private double foxySizeW;
-    private boolean lookAtRight;
-
-    private int frame;
+    private boolean cutting, isAxe, isPick;
 
     private State state, state2;
     private boolean toolTaken;
 
-    //Keys and boolean
-    private boolean rightPressed;
-    private boolean leftPressed;
-    private boolean upPressed;
-    private boolean downPressed;
-    private int scene;
-    private boolean paint;
-    private boolean changePosition;
+    private boolean spacePressed;
 
-    //Colisiones
-    double newX;
-    double newY;
-    double canvasWidth;
-    double canvasHeight;
+    private Axe axe;
+    private Pickaxe pickaxe;
 
-    private static final double HEIGHT_PROPORTION = 0.0578703704;
-    private static final double WIDTH_PROPORTION = 0.0325520833;
+    private final double HEIGHT_PROPORTION = 0.0578703704;
+    private final double WIDTH_PROPORTION = 0.0325520833;
 
-
-    public Foxy(Canvas canvas) {
+    public Foxy(Canvas canvas, Axe axe, Pickaxe pickaxe) {
+        super(canvas);
+        this.axe = axe;
+        this.pickaxe = pickaxe;
         this.health = 100;
-        this.canvas = canvas;
-        this.gc = canvas.getGraphicsContext2D();
-        initArrayList();
+        //initArrayList();
         this.state = State.STATIC;
-        this.frame = 0;
-        this.scene = 1;
-        this.position = new Position(600, 400);
-        this.foxySizeW = canvas.getWidth() * WIDTH_PROPORTION;
-        this.foxySizeH = canvas.getHeight() * HEIGHT_PROPORTION;
+        this.esc = 1;
+        this.width = canvas.getWidth() * WIDTH_PROPORTION;
+        this.height = canvas.getHeight() * HEIGHT_PROPORTION;
     }
 
-    private void initArrayList(){
+    @Override
+    protected void initArrayList(){
         this.idlesR = new ArrayList<>();
         this.idlesR_WithAxe = new ArrayList<>();
         this.idlesR_WithPickAxe = new ArrayList<>();
@@ -86,18 +70,12 @@ public class Foxy {
         this.runsL_WithPickAxe = new ArrayList<>();
 
         this.climb = new ArrayList<>();
-    }
-
-    private ArrayList<Image> loadImages(String basePath, int count) {
-        ArrayList<Image> images = new ArrayList<>();
-        for (int i = 1; i <= count; i++) {
-            images.add(new Image(getClass().getResourceAsStream(basePath + i + ".png"), foxySizeW, foxySizeH, false, false));
-        }
-        return images;
+        this.hurt = new ArrayList<>();
     }
 
     private void setAnimations() {
         climb = loadImages("/img/Characters/Foxy/Sprites/climb/player-climb-", 3);
+        hurt = loadImages("/img/Characters/Foxy/Sprites/hurt/player-hurt-", 2);
         loadIdles();
         loadRuns();
     }
@@ -146,9 +124,10 @@ public class Foxy {
         idlesClear();
         runsClear();
         climb.clear();
+        hurt.clear();
 
-        this.foxySizeW = canvas.getWidth() * WIDTH_PROPORTION;
-        this.foxySizeH = canvas.getHeight() * HEIGHT_PROPORTION;
+        this.width = canvas.getWidth() * WIDTH_PROPORTION;
+        this.height = canvas.getHeight() * HEIGHT_PROPORTION;
         setAnimations();
         paint = true;
     }
@@ -215,36 +194,42 @@ public class Foxy {
             }
         } else if (state.equals(State.CLIMBING)){
             images = climb;
+        } else if(state.equals(State.CUTTING) && toolTaken){
+            images = hurt;
         }
 
         return images;
     }
 
+    @Override
     public void draw() {
+
         if (!paint) {
             updateAnimations();
+        }
+        if(isAxe || isPick){
+            if(axe.getDurability() == 0 && isAxe){
+                isAxe = false;
+            }
+
+            if(pickaxe.getDurability() == 0 && isPick){
+                isPick = false;
+            }
+
+            if(!isPick && !isAxe){
+                toolTaken = false;
+                state = State.STATIC;
+            } else {
+                if(isAxe && !isPick){
+                    state2 = State.WITH_AXE;
+                } else if(isPick && !isAxe){
+                    state2 = State.WITH_PICKAXE;
+                }
+            }
         }
 
         onMove();
         ArrayList<Image> currentAnimation = animations();
-        /*
-        if(state.equals(State.STATIC)){
-            if(lookAtRight == true){
-                currentAnimation = idlesR;
-            } else {
-                currentAnimation = idlesL;
-            }
-        } else if(state.equals(State.RUNNING)){
-            if(lookAtRight == true){
-                currentAnimation = runsR;
-            } else {
-                currentAnimation = runsL;
-            }
-        } else if(state.equals(State.CLIMBING)) {
-            currentAnimation = climb;
-        }
-
-         */
 
         gc.drawImage(currentAnimation.get(frame % currentAnimation.size()), position.getX(), position.getY());
         frame++;
@@ -254,9 +239,9 @@ public class Foxy {
     public void onKeyPressed(KeyEvent e) {
         switch (e.getCode()) {
             case UP -> {
-                this.upPressed = true;
+                this.up = true;
                 this.state = State.RUNNING;
-                if(scene == 3){
+                if(esc == 3){
                     if(climb1() == true) {
                         this.state = State.CLIMBING;
                     }
@@ -264,9 +249,9 @@ public class Foxy {
                 }
 
             case DOWN -> {
-                this.downPressed = true;
+                this.down = true;
                 this.state = State.RUNNING;
-                if(scene == 3){
+                if(esc == 3){
                     if(climb1() == true) {
                         this.state = State.CLIMBING;
                     }
@@ -274,30 +259,81 @@ public class Foxy {
             }
 
             case RIGHT -> {
-                this.rightPressed = true;
+                this.right = true;
                 this.state = State.RUNNING;
-                this.lookAtRight = true;}
+                this.lookAtRight = true;
+            }
+
             case LEFT -> {
-                this.leftPressed = true;
+                this.left = true;
                 this.state = State.RUNNING;
-                this.lookAtRight = false;}
+                this.lookAtRight = false;
+            }
+
+            case F -> {
+                if(toolTaken){
+                    spacePressed = true;
+                    state = State.CUTTING;
+                    cutting = true;
+                }
+
+            }
+
+            case DIGIT1 -> {
+                state = State.STATIC;
+                toolTaken = false;
+            }
+
+            case DIGIT2 -> {
+                if(isAxe && axe.getDurability() > 0){
+                    toolTaken = true;
+                    state2 = State.WITH_AXE;
+                }
+            }
+
+            case DIGIT3 -> {
+                if(isPick && pickaxe.getDurability() > 0){
+                    toolTaken = true;
+                    state2 = State.WITH_PICKAXE;
+                }
+            }
+
+            case R -> {
+                if(toolTaken && state2.equals(State.WITH_AXE)){
+                    if(stones > 10 && wood > 10 && axe.getDurability() != 100){
+                        wood -= 10;
+                        stones -= 10;
+                        axe.repair();
+                    }
+                } else if (toolTaken && state2.equals(State.WITH_PICKAXE)) {
+                    if(stones > 10 && wood > 15 && pickaxe.getDurability() != 100){
+                        stones -= 10;
+                        wood -= 15;
+                        pickaxe.repair();
+                    }
+                }
+            }
         }
 
     }
 
     public void onKeyReleased(KeyEvent e) {
         switch (e.getCode()) {
-            case UP -> this.upPressed = false;
-            case DOWN -> this.downPressed = false;
-            case RIGHT -> this.rightPressed = false;
-            case LEFT -> this.leftPressed = false;
+            case UP -> this.up = false;
+            case DOWN -> this.down = false;
+            case RIGHT -> this.right = false;
+            case LEFT -> this.left = false;
+            case F -> {
+                this.cutting = false;
+                this.spacePressed = false;
+            }
         }
 
-        if (!upPressed && !downPressed && !rightPressed && !leftPressed) {
+        if (!up && !down && !right && !left && !spacePressed) {
             this.state = State.STATIC;
         }
 
-        if(scene == 3){
+        if(esc == 3){
             if(climb1() == true) {
                 this.state = State.CLIMBING;
             }
@@ -321,6 +357,7 @@ public class Foxy {
         fromTo(0.5013020833, 0.5555555554, 0.525390625, 0.5555555554);
     }
 
+    @Override
     public void onMove(){
         if(isChangePosition() == true){
             updatePosition();
@@ -328,7 +365,7 @@ public class Foxy {
 
         anyScene();
 
-        if(scene == 1){
+        if(esc == 1){
 
             double x1 = canvasWidth * 0.46875;
             double x2 = canvasWidth * 0.5013020833;
@@ -337,7 +374,7 @@ public class Foxy {
 
             if((newX > x1 && newX < x2 ) && (newY >= y1 && newY < y2)){
 
-                scene = 2;
+                esc = 2;
                 newY = canvas.getHeight() * 0.8564814815;
                 newX = canvas.getWidth() * 0.6315104167;
                 Controller.SCREEN = 1;
@@ -349,17 +386,17 @@ public class Foxy {
                 collisionsHouse();
             }
 
-        } else if(scene == 2){
+        } else if(esc == 2){
 
             if(newX  < canvasWidth * 0.01953125) { //Scene3
-                scene = 3;
+                esc = 3;
                 newX = canvas.getWidth() * 0.0462962963;
                 newY = canvas.getHeight() * 0.5960648148;
                 lookAtRight = true;
                 Controller.SCREEN = 2;
 
             } else if(newY > canvasHeight * 0.8726851852){ //Scene 1
-                scene = 1;
+                esc = 1;
                 newX = canvas.getWidth() * 0.4817708333;
                 newY = canvas.getHeight() * 0.599537037;
                 Controller.SCREEN = 0;
@@ -368,7 +405,7 @@ public class Foxy {
             }
         } else {
             if(newX <= 0 && ((newY >= canvasHeight * 0.5555555557) && (newY <= canvasHeight * 0.6111111111))){
-                scene = 2;
+                esc = 2;
                 newX = canvasWidth * 0.08463541667;
                 newY = canvasHeight * 0.5902777779;
                 lookAtRight = true;
@@ -394,99 +431,22 @@ public class Foxy {
         position.setY(newY);
     }
 
-    //Este metodo es para el movimiento en cualquier escenario
-    private void anyScene(){
-        newX = position.getX();
-        newY = position.getY();
-
-        double my = 0.01157407407 * canvasHeight;
-        double mx = 0.006510416667 * canvasWidth;
-
-        if (upPressed) {
-            newY -= my;
-        }
-        if (downPressed) {
-            newY += my;
-        }
-        if (rightPressed) {
-            newX += mx;
-        }
-        if (leftPressed) {
-            newX -= mx;
-        }
-
-        if (newX < 0) {
-            newX = 0;
-        } else if (newX + foxySizeH > canvasWidth) {
-            newX = canvasWidth - foxySizeH;
-        }
-
-        if (newY < 0) {
-            newY = 0;
-        } else if (newY + foxySizeH > canvasHeight) {
-            newY = canvasHeight - foxySizeH;
-        }
+    public void onMove2(double x1, double y1, double x2, double y2){
+        fromTo(x1, y1, x2, y2);
+        onMove();
     }
 
-    public Position getPosition(){
-        return position;
-    }
+    @Override
+    protected void updatePosition2() {
 
-    public void setScene(int sc){
-        scene = sc;
-    }
-
-    public void setPaint(boolean paint  ){
-        this.paint = paint;
-    }
-
-    public void generalCollisionsInScene2(){
-        /*
-             * //Horizontal ("Y" does not change in coordinates, except if it starts or ends at some end of the width)
-             * //Vertical ("X" does not change in coordinates)
-         */
-        //Primera pared superior (la pared blanca de la izquierda)
-        fromTo(0, 0.3819444446, 0.4557291667, 0.3819444446); //Horizontal
-
-        //Segunda pared superior (la pared blanca de la derecha)
-        fromTo(0.4557291667, 0.1279578183, 1, 0.1279578183); //Horizontal
-
-        //Pared adyacente a la segunda pared blanca
-        fromTo(0.4557291667, 0.1279578183, 0.4557291667, 0.3819444446); //Vertical
-
-        //Primer piso (el piso debajo de la primera pared blanca)
-        fromTo(0, 0.7002314815, 0.458984375, 0.7002314815); //Horizontal
-
-        //Tercer piso (el piso a la parte derecha del tunel del escenario 2)
-        fromTo(0.7811197917, 0.7071759259, 1, 0.7071759259); //Horizontal
-
-        //Pared iquierda del tunel para salir al escenario 1
-        fromTo(0.458984375, 0.7002314815, 0.458984375, 0.8680555556); //Vertical
-
-        //Pared derecha del tunel para salir al escenario 1
-        fromTo(0.7811197917, 0.7071759259,0.7811197917, 0.8680555556); //Vertical
-
-        collisions2();
-    }
-
-    //Este metodo es para cuando el canva cambie sus dimensiones (para que foxy no se mueva de posición)
-    public void updatePosition() {
-        //Esto es para cuando el canva se inicialice por primera vez (hablo de las variables como canvasWidth y height)
-        if (canvasWidth == 0 || canvasHeight == 0) {
-            canvasWidth = canvas.getWidth();
-            canvasHeight = canvas.getHeight();
-        }
-
-        // Esto es para calcular las proporciones de la posición actual en el canva
-        double proportionX = position.getX() / canvasWidth;
-        double proportionY = position.getY() / canvasHeight;
-
-        // Con esto se actualizan las variables
-        canvasWidth = canvas.getWidth();
-        canvasHeight = canvas.getHeight();
-
-
-        if (canvasWidth != 0 && canvasHeight != 0) {
+        if(isFirstPosition){
+            position.setX(canvasWidth * 0.5);
+            position.setY(0);
+            System.out.println("Posición Foxy: (" + position.getX() + ", " + position.getY() + ")");
+            System.out.println("Canvas width:" + canvasWidth);
+            System.out.println("Canvas height:" + canvasHeight);
+            isFirstPosition = false;
+        } else if (canvasWidth != 0 && canvasHeight != 0) {
             // Lo siguiente es para ajustar la posición basándose en las nuevas dimensiones del canvas
             position.setX(proportionX * canvasWidth);
             position.setY(proportionY * canvasHeight);
@@ -497,14 +457,6 @@ public class Foxy {
         }
 
         changePosition = false;
-    }
-
-    public void setChangePosition(boolean changePosition){
-        this.changePosition = changePosition;
-    }
-
-    public boolean isChangePosition(){
-        return changePosition;
     }
 
     public void climbScene3(){
@@ -520,67 +472,6 @@ public class Foxy {
         }
 
         return false;
-    }
-
-    public void fromTo(double x1, double y1, double x2, double y2) {
-        // Coordenadas de la línea diagonal (río)
-
-        x1 *= canvasWidth;
-        y1 *= canvasHeight;
-        x2 *= canvasWidth;
-        y2 *= canvasHeight;
-
-        if (intersectsLine(position.getX(), position.getY(), newX, newY, x1, y1, x2, y2)) {
-            newX = position.getX();
-            newY = position.getY();
-        }
-    }
-
-    private boolean intersectsLine(double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3) {
-        double s1_x, s1_y, s2_x, s2_y;
-        s1_x = x1 - x0;
-        s1_y = y1 - y0;
-        s2_x = x3 - x2;
-        s2_y = y3 - y2;
-
-        double s, t;
-        s = (-s1_y * (x0 - x2) + s1_x * (y0 - y2)) / (-s2_x * s1_y + s1_x * s2_y);
-        t = ( s2_x * (y0 - y2) - s2_y * (x0 - x2)) / (-s2_x * s1_y + s1_x * s2_y);
-
-        return s >= 0 && s <= 1 && t >= 0 && t <= 1;
-    }
-
-    public void collisions2(){
-
-        fromTo(0.234375, 0.6944444445, 0.2473958333, 0.601851852);
-        fromTo(0.2473958333, 0.601851852, 0.3059895833, 0.601851852);
-        fromTo(0.3059895833, 0.601851852, 0.3580729167, 0.613425926);
-        fromTo(0.3580729167, 0.613425926, 0.390625, 0.6365740742);
-        fromTo(0.390625, 0.6365740742, 0.390625, 0.6979166667);
-
-        //Table 1
-        //Diagonal inferior L
-        fromTo(0.5794270834, 0.5092592591, 0.60546875, 0.5902777776);
-        //Horizontal inferior L
-        fromTo(0.60546875, 0.5902777776, 0.6575520834, 0.5902777776);
-        //Diagonal inferior R
-        fromTo(0.6575520834, 0.5902777776, 0.68359375, 0.5439814813);
-        //Lateral R
-        fromTo(0.68359375, 0.5439814813, 0.68359375, 0.3009259258);
-        //Horizontal superior
-        fromTo(0.68359375, 0.3009259258, 0.5794270834, 0.3009259258);
-        //Lateral L
-        fromTo(0.5794270834, 0.3009259258, 0.5794270834, 0.5092592591);
-
-        //Tables 1 and 2
-        //Horizontal inferior
-        fromTo(0.8333333334, 0.659722222, 0.9440104167, 0.659722222);
-        //Horizontal superior
-        fromTo(0.8333333334, 0.3587962962, 0.9440104167, 0.3587962962);
-        //Lateral L
-        fromTo(0.8333333334, 0.659722222, 0.8333333334, 0.3587962962);
-        //Lateral R
-        fromTo(0.9440104167, 0.659722222, 0.9440104167, 0.3587962962);
     }
 
     public void diagonalCollisions3(){
@@ -664,20 +555,12 @@ public class Foxy {
         this.toolTaken = toolTaken;
     }
 
-    public boolean getToolTaken(){
-        return toolTaken;
-    }
-
-    public State getState2(){
-        return state2;
-    }
-
     public double getScore() {
         return score;
     }
 
     public void setScore(double score) {
-        this.score = score;
+        this.score += score;
     }
 
     public double getHealth() {
@@ -693,7 +576,7 @@ public class Foxy {
     }
 
     public void setStones(int stones) {
-        this.stones = stones;
+        this.stones += stones;
     }
 
     public int getWood() {
@@ -701,22 +584,87 @@ public class Foxy {
     }
 
     public void setWood(int wood) {
-        this.wood = wood;
+        this.wood += new Random().nextInt(wood) + 1;
     }
 
-    public int getToolDurability() {
-        return toolDurability;
+
+    public double getToolDurability() {
+        if(toolTaken){
+            switch (state2){
+                case WITH_AXE -> {
+                    return axe.getDurability();
+                }
+
+                case WITH_PICKAXE -> {
+                    return pickaxe.getDurability();
+                }
+            }
+        }
+
+        return 0;
     }
 
-    public void setToolDurability(int toolDurability) {
-        this.toolDurability = toolDurability;
+    public boolean isCutting(){
+        if(toolTaken){
+            return cutting;
+        } else {
+            return false;
+        }
     }
 
-    public double getFoxySizeH(){
-        return foxySizeH;
+    public Axe getAxe() {
+        return axe;
     }
 
-    public double getFoxySizeW(){
-        return foxySizeW;
+    public Pickaxe getPickaxe() {
+        return pickaxe;
+    }
+
+    public boolean isAxe(){
+        return isAxe;
+    }
+
+    public void setAxe(boolean isAxe) {
+        this.isAxe = isAxe;
+    }
+
+    public boolean isPick(){
+        return isPick;
+    }
+
+    public void setPick(boolean isPick) {
+        this.isPick = isPick;
+    }
+
+    public String getStringTool(){
+        if(toolTaken){
+            switch (state2){
+                case WITH_AXE -> {
+                    return "axe";
+                }
+
+                case WITH_PICKAXE -> {
+                    return "pickaxe";
+                }
+            }
+        }
+       return "";
+    }
+
+    public String toolEquipped(){
+        if(isPick && isAxe){
+            return "Pickaxe and Axe";
+        } else {
+            if(isPick){
+                return "pickaxe";
+            }
+
+            if(isAxe){
+                return "Axe";
+            }
+        }
+
+
+        return "";
     }
 }

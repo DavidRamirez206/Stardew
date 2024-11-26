@@ -60,7 +60,6 @@ public abstract class SceneBase {
             double y = event.getY(); // Y
 
             System.out.println("Coordenadas del clic -> X: " + x + ", Y: " + y);
-            System.out.println("Canvas: \nwidth: " + canvas.getWidth() + ", height: " + canvas.getHeight());
         });
     }
 

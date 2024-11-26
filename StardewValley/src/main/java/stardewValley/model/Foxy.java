@@ -500,8 +500,6 @@ public class Foxy extends CharacterMove {
     }
 
     public void diagonalCollisionsSR() {
-        //Small River
-        //Diagonal 1
     }
 
     public void diagonalCollisionsMA(){

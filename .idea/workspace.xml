@@ -5,59 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="829be2ee-55f5-4993-9f78-33e42b02b5db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Bear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/CharacterMove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/FlowerCrop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/control/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Axe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Foxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/House.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Obstacle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Pickaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Pickaxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/PurplePortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/PurplePortal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/River.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Rock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/model/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Instructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/Instructions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/SceneBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/SceneBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenA.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenB.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/screens/ScreenC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/java/stardewValley/ui/StardewValley.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/controller-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/StardewValley/src/main/resources/fxml/controller-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Foxy.ase" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Previews/Dizzy.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Previews/Roll.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Previews/climb.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Previews/crouch.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Previews/hurt.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Previews/idle.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Previews/jump.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Previews/run.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Dizzy/Dizzy1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Dizzy/Dizzy2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Dizzy/Dizzy3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Dizzy/Dizzy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Dizzy/Dizzy5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Dizzy/Dizzy6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Hurt2/hurt-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/LookUp/lookUp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Roll/Roll1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Roll/Roll2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Roll/Roll3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/Roll/Roll4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/WallGrab/wall-grab1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/WallGrab/wall-grab2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/crouch/player-crouch-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/crouch/player-crouch-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/jump/player-jump-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Sprites/jump/player-jump-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Characters/Foxy/Spritesheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Others/Coin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Others/Heno.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Others/Pumpkin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Others/Shield.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StardewValley/src/main/resources/img/Others/skip_icon.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +169,8 @@
       <workItem from="1732462581991" duration="2594000" />
       <workItem from="1732475990754" duration="9991000" />
       <workItem from="1732506720258" duration="53000" />
-      <workItem from="1732564398452" duration="11384000" />
+      <workItem from="1732564398452" duration="12321000" />
+      <workItem from="1732585410046" duration="8728000" />
     </task>
     <servers />
   </component>

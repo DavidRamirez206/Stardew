@@ -59,6 +59,17 @@ public abstract class Obstacle {
         this.position2 = new Position(100, 100);
     }
 
+    public Obstacle(Canvas canvas, double positionX, double positionY, double sW, double sH) {
+        this.canvas = canvas;
+        this.sH = sH;
+        this.sW = sW;
+        this.gc = canvas.getGraphicsContext2D();
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.position = new Position(100, 100);
+        this.position2 = new Position(100, 100);
+    }
+
     private void ramdonType(int type, int n){
         if(type != 0){
             this.type=type;

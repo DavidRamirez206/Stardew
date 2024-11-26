@@ -15,17 +15,26 @@ public class ScreenA extends SceneBase {
 
     private House house;
 
+    private FlowerCrop flowerCrop1;
+    private FlowerCrop flowerCrop2;
+    private FlowerCrop flowerCrop3;
+    private FlowerCrop flowerCrop4;
+
     private int cropOne_1;
     private boolean cropOne;
+    private boolean drawOne;
 
     private int cropTwo_1;
     private boolean cropTwo;
+    private boolean drawTwo;
 
     private int cropThree_1;
     private boolean cropThree;
+    private boolean drawThree;
 
     private int cropFour_1;
     private boolean cropFour;
+    private boolean drawFour;
 
     private List<Tree> trees;
     private final int N_TREES = 10;
@@ -45,10 +54,19 @@ public class ScreenA extends SceneBase {
             new Position(0.9223958333, 0.7175925926), //10
     };
 
+    private Position[] positionsCrop = {
+            new Position(0.1041666667, 0.04629629628), //1
+            new Position(0.2473958333, 0.04629629628), // 2
+
+            new Position(0.75625, 0.04629629628), // 3
+            new Position(0.9223958333, 0.04629629628), // 4
+    };
+
     public ScreenA(Canvas canvas, String img, Foxy foxy) {
         super(canvas, img, foxy);
         house = new House(canvas, "/img/object/halfHouse1", "/img/object/halfHouse2", 0.5, 0.3993055556, 0.1302083332, 0.1157407408);
         loadTrees();
+        loadFlowers();
         draw();
     }
 
@@ -60,6 +78,13 @@ public class ScreenA extends SceneBase {
         }
     }
 
+    private void loadFlowers(){
+        flowerCrop1 = new FlowerCrop(canvas, 0, 0, 0.3333333333, 0.3333333333);
+        flowerCrop2 = new FlowerCrop(canvas, 0.6666666667, 0, 0.3333333333, 0.3333333333);
+        flowerCrop3 = new FlowerCrop(canvas, 0, 0.6666666667, 0.3333333333, 0.3333333333);
+        flowerCrop4 = new FlowerCrop(canvas, 0.6666666667, 0.6666666667, 0.3333333333, 0.3333333333);
+    }
+
     @Override
     public void draw() {
         super.updateCanvas();
@@ -68,6 +93,7 @@ public class ScreenA extends SceneBase {
     @Override
     public void redraw(){
         super.gcUpdate();
+        drawFlowers();
         trees.get(0).otherDraw2();
         house.draw2();
         drawTree2();
@@ -76,6 +102,7 @@ public class ScreenA extends SceneBase {
         drawTree1();
         checkForCutting();
 
+        /*
         gc.setStroke(Color.RED);
 
         gc.strokeRect(
@@ -105,6 +132,8 @@ public class ScreenA extends SceneBase {
                 canvas.getWidth() * (2.0 / 3),
                 canvas.getHeight() / 3
         );
+
+         */
     }
 
     @Override
@@ -113,16 +142,34 @@ public class ScreenA extends SceneBase {
 
         this.house.setPaint(false);
         updateTrees();
+        updateFlowers();
     }
 
      @Override
     public void onKeyPressed(KeyEvent event){
 
-        if(event.getCode() == KeyCode.S){
+         if (event.getCode() == KeyCode.S) {
+             if (foxyInsideRecOne() && cropOne && cropOne_1 == 2) {
+                 //System.out.println("Drawing crop one...");
+                 drawOne = true;
+                 foxy.setScore(200);
+             } else if (foxyInsideRecTwo() && cropTwo && cropTwo_1 == 2) {
+                 //System.out.println("Drawing crop two...");
+                 drawTwo = true;
+                 foxy.setScore(200);
+             } else if (foxyInsideRecThree() && cropThree && cropThree_1 == 2) {
+                 //System.out.println("Drawing crop three...");
+                 drawThree = true;
+                 foxy.setScore(200);
+             } else if (foxyInsideRecFour() && cropFour && cropFour_1 == 2) {
+                 //System.out.println("Drawing crop four...");
+                 drawFour = true;
+                 foxy.setScore(200);
+             }
+         }
 
-        }
 
-        if (event.getCode() == KeyCode.SPACE){
+         if (event.getCode() == KeyCode.SPACE){
             super.foxy.setEsc(2);
 
             Controller.SCREEN = 1;
@@ -156,6 +203,36 @@ public class ScreenA extends SceneBase {
     private void updateTrees(){
         for (Tree tree : trees) {
             tree.setPaint(false);
+        }
+    }
+
+    private void updateFlowers(){
+        flowerCrop1.setPaint(false);
+        flowerCrop2.setPaint(false);
+        flowerCrop3.setPaint(false);
+        flowerCrop4.setPaint(false);
+    }
+
+    private void drawFlowers(){
+        if(drawOne){
+            flowerCrop1.draw();
+            flowerCrop1.update();
+            //System.out.println("Dibunado cultivo 1");
+        }
+        if(drawTwo){
+            flowerCrop2.draw();
+            flowerCrop2.update();
+            //System.out.println("Dibujadno cultivo 2");
+        }
+        if(drawThree){
+            flowerCrop3.draw();
+            flowerCrop3.update();
+            //System.out.println("Dibujadno cultivo 3");
+        }
+        if(drawFour){
+            flowerCrop4.draw();
+            flowerCrop4.update();
+            //System.out.println("Dibujadno cultivo 4");
         }
     }
 
@@ -208,6 +285,7 @@ public class ScreenA extends SceneBase {
 
         }
 
+        /*
         if(cropOne && cropOne_1 == 2){
             System.out.println("Rectangulo 1");
             cropOne = false;
@@ -227,6 +305,8 @@ public class ScreenA extends SceneBase {
             System.out.println("Rectangulo 4");
             cropFour = false;
         }
+
+         */
     }
 
     private boolean foxyInsideRecOne(){

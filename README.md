@@ -2,7 +2,8 @@
 flowchart TD
     A[Start] --> B[Convert input string to list of characters]
     B --> C[Count frequency of each character]
-    C --> D[Create leaf node for each character]
+    C --> C2[Sort characters by frequency (ascending)]
+    C2 --> D[Create leaf node for each character]
     D --> E[Insert all leaf nodes into a list]
     E --> F{More than 1 node left?}
     F -->|Yes| G[Extract two nodes with lowest frequency]
